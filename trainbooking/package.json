@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rodionov217/trainbooking.git"
+    "url": "https://github.com/rodionov217/train.git"
   },
   "private": true,
   "dependencies": {
