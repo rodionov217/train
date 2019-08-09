@@ -44,6 +44,7 @@ button {
   min-width: 1050px;
   z-index: 100;
   line-height: normal;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .logo, .nav {
@@ -213,52 +214,55 @@ align-items: flex-end;
   font-size: 30px;
 }
 .trainpicker__reverse {
-  -webkit-appearance: none;
   margin: 0;
   padding: 0;
-  outline: none;
-  border: none;
-  width: 20px;
-  height: 20px;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
   cursor: pointer;
-  background-image: url('./images/round-cached-24px.svg');
-  background-size: contain;
   transition: all .35s ease-out;
+  opacity: 0.5;
 }
 .trainpicker__reverse:hover {
-transform: scale(1.2);
+  transform: scale(1.2);
+  opacity: 1;
 }
+
 .trainpicker__button {
+  margin-left: auto;
   display: block;
   background: #FFA800;
   border: 1px solid  #FFA800;
-border-radius: 5px;
-width: 285px;
-height: 50px;
-line-height: 50px;
-font-size: 20px;
-font-weight: 500;
-text-align: center;
-
-
-text-transform: uppercase;
-color: #292929;
-align-self: flex-end;
-cursor: pointer;
-margin-top: 40px;
-text-decoration: none;
+  border-radius: 5px;
+  width: 285px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 40px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
-/* .trainpicker__button a {
-  
-} */
+.trainpicker__button a {
+  color: #292929;
+  text-decoration: none;
+}
 
-.trainpicker__button:hover {
+.trainpicker__button:not(:disabled):hover {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .trainpicker__button:active {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: transparent;
+}
+.trainpicker__button:active a {
   color: #FFA800;
+}
+
+.trainpicker__button:disabled {
+  cursor: initial;
 }
 
 
@@ -601,6 +605,16 @@ border: none;
 .subscription-form__button:active {
   background: #FFFFFF;
 }
+.subscription_hint {
+  color: #fff;
+  font-size: 12px;
+}
+.subscription_thankyou {
+  color: #fff;
+  font-weight: 300;
+  font-size: 20px;
+
+}
 
 .social {
   display: flex;
@@ -668,11 +682,11 @@ list-style: none;
 .footer__copyright {
   font-weight: 100;
 }
-.footer__home-arrow {
+/* .footer__home-arrow {
   display: flex;
   justify-content: center;
-}
-.home-arrow__link {
+} */
+.footer__home-arrow {
   background-image: url('./images/home-arrow.png');
   display: block;
   height: 36px;
@@ -680,6 +694,7 @@ list-style: none;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .main-search {
@@ -704,6 +719,8 @@ list-style: none;
 .trainpicker__button-horizontal {
   position: absolute;
   right: 20px;
+  top: 130px;
+  margin-left: 0;
 }
 
 .trainpicker__content-horizontal {
@@ -919,6 +936,7 @@ border-radius: 3px;
   display: flex;
 }
 
+
 .train-info {
   background-color: #E4E0E9;
   padding: 15px;
@@ -926,7 +944,7 @@ border-radius: 3px;
   box-sizing: content-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   position: relative;
 }
@@ -937,7 +955,7 @@ border-radius: 3px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  /* margin: auto; */
+  margin: auto;
 }
 .train-info_number {
   /* margin: auto; */
@@ -1112,8 +1130,26 @@ border-radius: 3px;
   cursor: initial;
 }
 .to-order-button:disabled:hover,
-.purchase-button:disabled {
+.purchase-button:disabled:hover {
   box-shadow: none;
+  position: relative;
+}
+
+.purchase-button:disabled:hover::after {
+  content: "Заполните все поля формы";
+  display: block;
+  border: red 1px solid;
+  border-radius: 3px;
+  position: absolute;
+  top: -30px;
+  left: 50px;
+  z-index: 10;
+  color: red;
+  background-color:rgb(248, 209, 209);
+  text-transform: none;
+  line-height: 1.2;
+  font-size: 13px;
+  padding: 5px;
 }
 
 
@@ -1274,43 +1310,25 @@ border-radius: 3px;
   align-items: center;
   justify-content: space-between;
   background-color: #E4E0E9;
- padding: 0 10px;
+  padding: 0 10px;
 }
 .current-train .train-info_number {
   margin: 0;
-  align-self: flex-start;
-  padding-left: 5px;
 }
-.current-train_schedule {
-  border-right: 1px solid #c4c4c4;
+.current-train .train-schedule {
+  border-right: none;
 }
-.current-train_schedule .train-schedule {
-  border: none;
-}
-/* .current-train_schedule .train-schedule::before, 
-.current-train_schedule .train-schedule::after {
-  border: 1px solid #fff;
 
-  height: 100%;
-  content: '';
-  display: inline-block;
-  position: absolute;
- left: 0;
- top: -1px;
-}
-.current-train_schedule .train-schedule::after {
-  left: 415px;
-} */
 
 .current-train_travel-time {
-
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   height: 119px;
+  width: 100px;
 }
-.train-info::after,
+.current-train_travel-time::after,
 .current-train_travel-time::before {
   border: 1px solid #fff;
   height: 98%;
@@ -1318,8 +1336,8 @@ border-radius: 3px;
   display: inline-block;
   position: absolute;
 }
-.train-info::after {
-  right: -2px;
+.current-train_travel-time::after {
+  left: -420px;
 }
 .current-train_travel-time::before {
   border: 1px solid #fff;
@@ -1786,10 +1804,7 @@ width: 50%;
   width: 150px;
   cursor: pointer;
 }
-.to-order-button-container {
-display: flex;
-justify-content: flex-end;
-}
+
 .purchase-button {
   width: 200px;
   margin-left: 40%;
@@ -2169,6 +2184,8 @@ label[for="disabilities"] {
   border-top: 1px dotted #928F94;
   border-bottom: 1px dotted #928F94;
 }
+
+
 .order fieldset {
   border: none;
   padding: 20px;
@@ -2256,6 +2273,224 @@ opacity: 0;
 
 
 
+.confirmation {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+.confirmation > .train {
+  margin: 0;
+  border: none;
+}
+.confirmation > .order_title {
+  border: 1px solid #928F94;
+}
+
+
+.passenger {
+  padding: 30px 20px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  background-color: #fff;
+}
+.passenger:last-child {
+  border-bottom: none;
+}
+.passenger-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+  height: 110px;
+}
+
+.passenger-icon_img {
+  width: 80px;
+  height: 80px;
+  background-image: url(./images/passenger-large.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.passenger-info_name,
+.passenger-info_other {
+  font-size: 18px;
+line-height: 1.5;
+color: #292929;
+}
+.passenger-info_other {
+  color: #928F94;
+  font-weight: 200;
+}
+
+
+.confirmation_payment {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+  font-size: 20px;
+  padding: 0 20px;
+  background-color: #fff;
+}
+.confirmation_price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28px;
+  width: 200px;
+}
+.confirmation_price::after,
+.success_price::after {
+  content: '\20BD';
+  display: inline-block;
+  color: #928F94;
+}
+.confirmation_method {
+  border-right: 1px solid #E5E5E5;
+  width: 60%;
+  height: 100%;
+  line-height: 80px;
+}
+
+
+
+.main-search-success {
+  background-image: url(./images/train-station.png);
+}
+
+
+.success {
+  position: relative;
+  top: -200px;
+  margin: auto;
+  width: 900px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.success_title {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.success_banner {
+  background-color: #fff;
+}
+.success_order {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 20px;
+  border-bottom: 1px solid #c4c4c4;
+  font-size: 36px;
+  line-height: 42px;
+  color: #3E3C41;
+}
+
+.success_price::before {
+  content: 'сумма';
+  color: #928F94;
+  font-size: 36px;
+  font-weight: 300;
+  display: inline-block;
+  margin-right: 20px;
+}
+.success_price::after {
+  content: '\20BD';
+  display: inline-block;
+  color: #928F94;
+  margin-left: 10px;
+  font-weight: 300;
+}
+
+.success_icons {
+  padding: 50px 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #F4F3F6;
+}
+.success_item {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.success_text {
+  font-size: 14px;
+  color: #292929;
+  display: block;
+  width: 130px;
+  text-align: center;
+  margin-top: 15px;
+}
+.success_icon {
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+}
+.success_icon-computer {
+  background-image: url(./images/computer.png);
+}
+.success_icon-tickets {
+  background-image: url(./images/tickets.png);
+}
+.success_icon-conductor {
+  background-image: url(./images/conductor.png);
+}
+
+.success-info {
+  padding: 30px 100px;
+  height: 250px;
+  color: #292929;
+  border: 1px solid #c4c4c4;
+  border-top: none
+}
+.success-info_title {
+  margin: 20px 0;
+  text-transform: capitalize;
+}
+.success-info p {
+  font-weight: 300;
+  line-height: 1.8;
+}
+.success-info h3 {
+  margin-top: 40px;
+}
+
+
+.rating {
+  height: 100px;
+  background-color: rgba(255, 168, 0, 0.88);
+  padding-left: 50px;
+}
+.rating_text {
+  font-size: 20px;
+  display: inline-block;
+  margin-right: 20px;
+  height: 100%;
+  line-height: 100px;
+  font-weight: 200;
+}
+.rating_stars {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+}
+.rating svg {
+  cursor: pointer;
+}
+.rating svg:hover {
+  fill: #fff;
+}
+
 
 
 
@@ -2280,9 +2515,12 @@ body {
   .trainpicker__button-horizontal {
     position: relative;
     right: 0;
+    top: 0;
     align-self: center;
   }
 }
+
+
 
 
 
