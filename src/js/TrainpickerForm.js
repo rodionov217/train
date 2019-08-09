@@ -9,26 +9,35 @@ import { Datepicker } from './Datepicker';
 const MainSearchForm = (props) => {
   const api = useContext(ApiServiceContext);
   const {horizontal} = props;
-  const [fromName, setFromName] = useState({});
-  const [fromId, setFromId] = useState({});
-  const [toName, setToName] = useState({});
-  const [toId, setToId] = useState({})
+  const [fromName, setFromName] = useState('');
+  const [fromId, setFromId] = useState('');
+  const [toName, setToName] = useState('');
+  const [toId, setToId] = useState('')
   const [date, setDate] = useState(new Date());
   const [dateBack, setDateBack] = useState(null);
-  
+
+  const handleSwap = () => {
+    setFromName(toName);
+    setToName(fromName);
+  }
+
     return (
       <form  class={`trainpicker ${horizontal ? 'trainpicker-horizontal' : ''}`}>
             <div class={`trainpicker__content ${horizontal ? 'trainpicker__content-horizontal' : ''} `}>
               <label class="trainpicker_label">Направление</label>
               <div class="trainpicker__inputs">
                 <TypeaheadInput 
+                  value={fromName}
                   placeholder="Откуда"
                   onSelect={city => {
                   setFromName(city.name);
                   setFromId(city.id)
                   }}/>
-                <input class="trainpicker__reverse" type="checkbox" name="reverse" id="reverse"/>
+                <div onClick={handleSwap} class="trainpicker__reverse" type="checkbox" name="reverse" id="reverse">
+                  <i class="fas fa-exchange-alt"></i>
+                </div>
                 <TypeaheadInput 
+                value={toName}
                   placeholder="Куда"
                   onSelect={city => {
                   setToName(city.name);
@@ -56,26 +65,26 @@ const MainSearchForm = (props) => {
             </div>
             
             {/* <button onClick={e => e.preventDefault()} type="submit"> */}
-              <Link 
-                onClick={() => {
-                  
-                  props.setSearchParams({
-                    from: {
-                      name: fromName,
-                      id: fromId
-                    },
-                    to: {
-                      name: toName,
-                      id: toId 
-                    },
-                    date: date.toISOString().substr(0, 10),
-                    dateBack: dateBack && dateBack.toISOString().substr(0, 10)
-                  })
-              }
-              }
-                className={`trainpicker__button ${horizontal ? 'trainpicker__button-horizontal' : ''} `}
-                to='/search'>Найти билеты</Link>
-            {/* </button> */}
+              <button onClick={e => e.preventDefault()} type="submit" disabled={!(fromName && toName)} className={`trainpicker__button ${horizontal ? 'trainpicker__button-horizontal' : ''} `}>
+                {fromName && toName ? 
+                  <Link to='/search'
+                    onClick={() => {
+                      props.setSearchParams({
+                        from: {
+                          name: fromName,
+                          id: fromId
+                        },
+                        to: {
+                          name: toName,
+                          id: toId 
+                        },
+                        date: date.toISOString().substr(0, 10),
+                        dateBack: dateBack && dateBack.toISOString().substr(0, 10)
+                      })
+                    }}>Найти билеты</Link> :
+                  "Найти билеты" }
+              </button>
+            
              
           </form>
     )
@@ -83,6 +92,11 @@ const MainSearchForm = (props) => {
 
 const TrainpickerForm = (props) => {
   const path = props.location.pathname;
+  if (path === '/success') {
+    return (
+      <section class="main-search main-search-success"></section>
+    )
+  }
   if (path !== '/') {
     return (
       <section class="main-search">
@@ -90,7 +104,8 @@ const TrainpickerForm = (props) => {
       </section>
       )
   }
-  return (
+  if (path === '/') { 
+    return (
     <section class="main" id="main">
       <div class="main__motto">
         <div class="motto">Вся жизнь - 
@@ -103,6 +118,7 @@ const TrainpickerForm = (props) => {
       </div>
     </section>
   )
+  }
   }
 
 export {TrainpickerForm}
