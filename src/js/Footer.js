@@ -1,6 +1,37 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import {ApiServiceContext} from './context';
 
-const Footer = () => (
+
+const Footer = () => {
+  const api = useContext(ApiServiceContext);
+  const [email, setEmail] = useState('');
+  const [showHint, setShowHint] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+  
+  const handleInput = event => {
+    const value = event.target.value;
+    if (value.match(/[^a-zA-Z0-9,_,-,@,.]/)) {
+      return;
+    }
+    setEmail(value);
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (/^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/.test(email)) {
+      api.subscribe(email);
+      setShowHint(false);
+      setShowThankYou(true);
+      setEmail('');
+    } else {
+      setShowHint(true);
+      //setShowThankYou(false);
+    }
+  }
+
+
+
+  return (
   <footer class="footer" id="footer">
       <div class="footer footer-main">
       <div class="contacts">
@@ -14,10 +45,12 @@ const Footer = () => (
       </div>
       <div class="subscription">
         <h3 class="footer__title">Подписка</h3>
-        <form action="" class="subscription-form">
+        <form onSubmit={handleSubmit} action="" class="subscription-form">
           <label class="subscription-form__label">Будьте в курсе событий</label>
-            <input class="subscription-form__input" type="email" name="subscription" placeholder="e-mail"/>
-          <button class="subscription-form__button" type="submit">Отправить</button>
+            <input value={email} onChange={handleInput} class="subscription-form__input" type="email" name="subscription" placeholder="e-mail"/>
+          <button class="subscription-form__button"  type="submit">Отправить</button>
+            <div style={{visibility: showHint ? "visible" : "hidden" }} class="subscription_hint">Введите корректный email в формате email@mail.ru</div>
+            <div style={{visibility: showThankYou ? "visible" : "hidden"}} class="subscription_thankyou">Спасибо за подписку!</div>
         </form>
         <h3 class="footer__title">Подписывайтесь на нас</h3>
         <ul class="social">
@@ -40,13 +73,12 @@ const Footer = () => (
       </div>
     </div>
       <div class="footer-additional">
-          <div class="footer__logo"><a class="logo__link" href="#">Лого</a></div>
-          <div class="footer__home-arrow">
-            <a href="#main" class="home-arrow__link"></a>
-          </div>
+          <div class="footer__logo"><a class="logo__link" href="#">TrainBooking</a></div>
+          <div class="footer__home-arrow" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}></div>
           <div class="footer__copyright">2018 WEB</div>
       </div>
     </footer>
 )
+  }
 
 export {Footer};
