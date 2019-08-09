@@ -5,7 +5,7 @@ const TrainSchedule = ({info, showTravelTime}) => {
   const travelTimeHours = Math.floor(info.duration / 18000);
   const travelTimeMinutes = Math.floor((info.duration / 18000) % 1 * 60);;
   return (
-    <div class="current-train_schedule">
+   /*  <div class="current-train_schedule"> */
         <div class="train-schedule">
             <div class="train-schedule_way">
               <div class="train-schedule_from">
@@ -24,7 +24,7 @@ const TrainSchedule = ({info, showTravelTime}) => {
               </div>
             </div>
          </div>
-      </div>
+    /*   </div> */
   )
 }
 

@@ -15,10 +15,22 @@ export class ApiService {
     return await this.fetchData(`/routes/cities?name=${query}`)
   }
   getRoutes = async (params) => {
-    console.log(params);
     return await this.fetchData(`/routes?from_city_id=${params.from.id}&to_city_id=${params.to.id}&date_depart=${params.date}${params.dateBack ? "&date_end=" + params.dateBack : ""}`)
   }
   getSeats = async (id) => {
     return await this.fetchData(`/routes/${id}/seats`)
+  }
+
+  createOrder = async (order) => {
+    return await this.fetchData(`/order`, {
+      method: 'POST',
+      body: JSON.stringify(order)
+    })
+  }
+
+  subscribe = async (email) => {
+    return await this.fetchData(`/subscribe?${email}`, {
+      method: 'POST'
+    })
   }
 }
