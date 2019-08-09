@@ -1,10 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { TrainpickerForm } from './TrainpickerForm';
 
-const Homepage = () => {
+const Homepage = (props) => {
+  let about, how, reviews, contacts;
+  useEffect(() => {
+    about = document.getElementById('about');
+    how = document.getElementById('features');
+    reviews = document.getElementById('reviews');
+    contacts = document.getElementById('footer');
+  });
+  window.onresize = () => {
+    console.log(about);
+    props.setHomepageRefs({
+      about: about.offsetTop,
+      how: how.offsetTop,
+      reviews: reviews.offsetTop,
+      contacts: contacts.offsetTop
+    })
+  }
    return (
      <Fragment>
-      <About/>
+      <About />
       <Features />
       <Reviews />
     </Fragment>
