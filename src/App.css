@@ -23,8 +23,10 @@ button {
 .loader {
   background: #3E3C41;
   height: 100vh;
-
+  opacity: 0.5;
+  position: relative;
 }
+
 .loader_image {
   display: block;
   margin: auto;
@@ -133,24 +135,34 @@ align-items: flex-end;
 .trainpicker {
   background: rgba(41, 41, 41, 0.8);
   width: 640px;
-  height: 450px;
+  padding: 50px 0;
   color: #FFFFFF;
   font-weight: 300;
-  padding: 60px 20px;
+  
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
 }
 .trainpicker__content {
   display: flex;
   flex-direction: column;
+  padding: 20px 0;
 }
 .trainpicker_label {
   font-size: 26px;
   display: block;
    margin-bottom: 10px;
+}
+.input-with-icon {
+  padding: 0 5px;
+}
+.picker {
+  width: 285px;
+  height: 50px;
 }
 .trainpicker__inputs {
   display: flex;
@@ -176,7 +188,7 @@ align-items: flex-end;
   position: absolute;
   font-size: 16px;
   top: 16px;
-  left: 19px;
+  left: 23px;
   z-index: 0;
 }
 .trainpicker__hint-transparent {
@@ -190,6 +202,9 @@ align-items: flex-end;
   padding: 0;
   margin-top: 5px;
   color: #292929;
+  position: absolute;
+  z-index: 10;
+  width: 285px;
 }
 .suggestions > li {
   padding: 0 16px;
@@ -214,7 +229,7 @@ align-items: flex-end;
   font-size: 30px;
 }
 .trainpicker__reverse {
-  margin: 0;
+  margin: 0 5px;
   padding: 0;
   text-align: center;
   height: 50px;
@@ -229,7 +244,7 @@ align-items: flex-end;
 }
 
 .trainpicker__button {
-  margin-left: auto;
+  margin-left: 30px;
   display: block;
   background: #FFA800;
   border: 1px solid  #FFA800;
@@ -711,33 +726,22 @@ list-style: none;
 .trainpicker-horizontal {
   width: 1270px;
   height: 250px;
-  flex-direction: row;
-  align-items: flex-start;
   padding-top: 20px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .trainpicker__button-horizontal {
-  position: absolute;
-  right: 20px;
-  top: 130px;
-  margin-left: 0;
-}
-
-.trainpicker__content-horizontal {
-  width: 600px;
-  margin-top: 30px;
+  margin: 40px 10px 0 20px;
 }
 
 
 
 .progress {
-  margin-bottom: 30px;
-  height: 70px;
   background: #3E3C41;
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 }
 .number {
   display: inline-block;
@@ -749,8 +753,54 @@ list-style: none;
   text-align: center;
   margin: 20px;
 }
+.progress__text {
+  z-index: 5;
+  margin-right: 40px;
+}
 .progress__step {
   font-size: 20px;
+  position: relative;
+  box-sizing: border-box;
+  z-index: 0;
+  flex: 1 1;
+  text-align: center;
+}
+
+.progress__arrow {
+  position: absolute;
+  height: 100%;
+  left: 100%;
+  top: 0;
+  transition: linear  1.3s;
+}
+.progress__arrow::before,
+.progress__arrow::after {
+  content: "";
+  display: block;
+  position: relative;
+  left: -6px;
+  z-index: 2;
+  background-color: transparent;
+  height: 55%;
+  padding-left: 15px;
+  z-index: 10;
+  border-right: 1px solid #fff;
+}
+.progress__arrow::before {
+  transform: rotate(-25deg);
+  top: 1.5px;
+  z-index: 1;
+}
+.progress__arrow::after {
+  transform: rotate(25deg);
+  top: -9px;
+  z-index: 2;
+}
+
+.progress__step-current,
+.progress__arrow-current::before,
+.progress__arrow-current::after {
+  background-color: #FFA800;
 }
 
 
@@ -811,8 +861,8 @@ list-style: none;
 }
 
 .date-filter {
-  height: 200px;
-  padding-top: 20px;
+  height: 130px;
+  padding: 10px 15px;
   border: none;
   display: flex;
   flex-direction: column;
@@ -920,8 +970,67 @@ border-radius: 3px;
  }
 
 
+.results-display {
+  color: #928F94;
+  display: flex;
+  height: 90px;
+}
+.results-display ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.trains-count {
+  flex-grow: 1;
+}
 
+.results-option {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+.sort, .limit {
+  display: flex;
+  align-items: baseline;
+  margin-right: 15px;
+}
+.sort-by {
+  display: none;
+  color: #3E3C41;
+  font-weight: 300;
+  border-bottom: 1px solid #E5E5E5;
+  padding: 5px;
+  cursor: pointer;
+  width: 120px;
+  background-color:  #F7F5F9;
+}
+.sort_list-open {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+}
+.sort_list-open .sort-by{
+  display: block;
+} 
+.sort_list-open .sort-by:hover {
+  background-color: #e5e5e5;
+}
+.sort_list .sort-by-current {
+  display: inline-block;
+  background-color: transparent;
+}
+
+.limit ul.limit_list {
+  display: flex;
+}
+.limit-by {
+  margin: 0 5px;
+  cursor: pointer;
+  font-weight: 300;
+}
+.limit-by-current {
+  color: #3E3C41;
+ 
+}
 
 
  /* TRAIN CARD */
@@ -968,9 +1077,10 @@ border-radius: 3px;
   justify-content: left;
   flex-direction: column;
 }
-.train-info_from, .train-info_to{
+.train-info_name {
   color: #3E3C41;
   text-transform: capitalize;
+  font-weight: 200;
 }
 .train-info_from, .train-info_to, .train-info_depart {
   font-weight: 200;
@@ -2491,8 +2601,54 @@ color: #292929;
   fill: #fff;
 }
 
+.not-found-notice {
+
+  width: 600px;
+  font-size: 30px;
+  color: #434242;
+  line-height: 1
+}
 
 
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.pagination ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+.page {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid #C4C4C4;
+  color: #c4c4c4;
+  background-color: #e5e5e5;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.page:hover {
+  border: 1px solid #FFA800;
+  color: #FFA800;
+}
+.page-current,
+.page-current:hover {
+  background-color: #FFA800;
+  color: #fff;
+  border: 1px solid #FFA800;
+}
+
+.page-previous {
+
+}
 
 
 
@@ -2501,13 +2657,13 @@ body {
 }
 
 @media(max-width: 1260px) {
-  .trainpicker-horizontal {
+  /* .trainpicker-horizontal {
     flex-direction: column;
     width: 100%;
     height: auto;
     flex-wrap: nowrap;
     align-items: center;
-  }
+  } */
   .trainpicker-horizontal  * {
     
   }
