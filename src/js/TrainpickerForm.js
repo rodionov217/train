@@ -55,12 +55,6 @@ const MainSearchForm = (props) => {
                     setDate(date)}}
                   defaultDate={new Date()}
                   />
-
-                <Datepicker 
-                  style={{width: "285px", height: "50px"}} 
-                  onDateSelect={date => setDateBack(date)}
-                  defaultDate={null}
-                  />
               </div>
             </div>
             

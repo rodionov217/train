@@ -14,8 +14,8 @@ export class ApiService {
   getCities = async (query) => {
     return await this.fetchData(`/routes/cities?name=${query}`)
   }
-  getRoutes = async (params) => {
-    return await this.fetchData(`/routes?from_city_id=${params.from.id}&to_city_id=${params.to.id}&date_depart=${params.date}${params.dateBack ? "&date_end=" + params.dateBack : ""}`)
+  getRoutes = async (params, sortBy, limit, offset) => {
+    return await this.fetchData(`/routes?from_city_id=${params.from.id}&to_city_id=${params.to.id}&sort=${sortBy}&limit=${limit}&offset=${offset}&${params.filters || "?"}`)
   }
   getSeats = async (id) => {
     return await this.fetchData(`/routes/${id}/seats`)

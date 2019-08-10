@@ -112,7 +112,6 @@ const Datepicker = (props) => {
 
   const handleSelect = date => {
     handleDateChange(date);
-    console.log(date);
     onDateSelect(date)
   }
   return (

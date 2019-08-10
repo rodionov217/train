@@ -14,8 +14,8 @@ const TrainCard = (props) => {
            <div class="train-icon"></div>
            <h4 class="train-info_number">{departure.train.name}</h4>
            <div class="train-info_destination">
-             <div class="train-info_from">{departure.from.city.name}</div>
-             <div class="train-info_to">{departure.to.city.name}</div>
+             <div class="train-info_name">{departure.from.city.name}</div>
+             <div class="train-info_name">{departure.to.city.name}</div>
            </div>
          </div>
 

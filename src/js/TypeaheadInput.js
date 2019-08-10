@@ -42,6 +42,7 @@ const TypeaheadInput = (props) => {
   }
 
   return (
+    
     <div class="input-with-icon">
       <span className="trainpicker__hint">
         <span className="trainpicker__hint-transparent">{hint.slice(0, inputValue.length)}</span>{hint.slice(inputValue.length)}

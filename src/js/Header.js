@@ -33,7 +33,7 @@ const Header = (props) => {
         </nav>
       </section>
       <TrainpickerForm {...props}/>
-        {(props.location.pathname === '/' ||  props.location.pathname === '/success') ? null : <ProgressSteps/>}
+        {(props.location.pathname === '/' ||  props.location.pathname === '/success') ? null : <ProgressSteps {...props}/>}
     </Fragment>
   )
 }

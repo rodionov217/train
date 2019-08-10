@@ -36,18 +36,20 @@ const styles = theme => ({
 });
 
 class CustomizedSwitches extends React.Component {
+
   state = {
     checkedA: true,
     checkedB: true
   };
 
   handleChange = name => event => {
+    this.props.onChange();
     this.setState({ [name]: event.target.checked });
   };
 
   render() {
     const { classes, label } = this.props;
-  
+    
     const types = [
       {
         name: 'second-class',
@@ -78,9 +80,13 @@ class CustomizedSwitches extends React.Component {
       const res = types.find(el => el.value === type.toLowerCase()).name;
       return res;
     }
+
+
+
+
     return (
       <div  >
-       {/*  <label style={{color: "#fff"}}>Купе</label> */}
+      
       <FormGroup row >
       <FormControlLabel
           style={{width: '80%', "justifyContent": "space-between", "color": "#ffffff"}}
@@ -89,7 +95,7 @@ class CustomizedSwitches extends React.Component {
           labelPlacement="start"
           control={
             <Switch
-              checked={this.state.checkedA}
+              checked={this.props.checked}
               onChange={this.handleChange("checkedA")}
               value="checkedA"
               classes={{
@@ -114,15 +120,16 @@ CustomizedSwitches.propTypes = {
 
 const CustomSwitch =  withStyles(styles)(CustomizedSwitches);
 
-export default () => {
+export default (props) => {
+  const { first, second, third, fourth, setFirst, express, wifi, setSecond, setThird, setFourth, setExpress, setWifi } = props;
   return (
     <div>
-    <CustomSwitch label="Купе"/>
-    <CustomSwitch label="Плацкарт"/>
-    <CustomSwitch label="Сидячий"/>
-    <CustomSwitch label="Люкс"/>
-    <CustomSwitch label="Экспресс"/>
-    <CustomSwitch label="Wi-Fi"/>
+    <CustomSwitch checked={second} onChange={setSecond} label="Купе"/>
+    <CustomSwitch checked={third} onChange={setThird} label="Плацкарт"/>
+    <CustomSwitch checked={fourth} onChange={setFourth} label="Сидячий"/>
+    <CustomSwitch checked={first} onChange={setFirst} label="Люкс"/>
+    <CustomSwitch checked={express} onChange={setExpress} label="Экспресс"/>
+    <CustomSwitch checked={wifi} onChange={setWifi} label="Wi-Fi"/>
     </div>
   )
 }

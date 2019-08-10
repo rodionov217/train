@@ -11,8 +11,8 @@ const CurrentTrain = ({info}) => {
         <div class="train-info">
           <h4 class="train-info_number">{info.train.name}</h4>
           <div>
-            <div class="train-info_from">{info.from.city.name}</div>
-            <div class="train-info_destination">{info.to.city.name}</div>
+            <div class="train-info_name">{info.from.city.name}</div>
+            <div class="train-info_name">{info.to.city.name}</div>
           </div>
           </div>
       
