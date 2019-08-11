@@ -959,7 +959,7 @@ border-radius: 3px;
 
 
 .range-picker_label {
-  font-weight: 200;
+  font-weight: 300;
   display: block;
 }
 .range-picker_label:nth-child(even) {
@@ -1080,10 +1080,10 @@ border-radius: 3px;
 .train-info_name {
   color: #3E3C41;
   text-transform: capitalize;
-  font-weight: 200;
+  font-weight: 300;
 }
 .train-info_from, .train-info_to, .train-info_depart {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 14px;
   text-align: left;
   align-self: left;
@@ -1113,7 +1113,7 @@ border-radius: 3px;
 }
 .train-schedule_station {
   font-size: 13px;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .train-schedule_travel-arrow span {
@@ -1148,7 +1148,7 @@ border-radius: 3px;
 .train-seats_price
   {
   display: inline-block;
-  font-weight: 200;
+  font-weight: 300;
   padding: 10px 0;
 }
 .train-seats_type {
@@ -1180,7 +1180,7 @@ border-radius: 3px;
   display: inline-block;
   color: #928F94;
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 300;
   margin-left: 10px;
 }
 
@@ -1348,7 +1348,7 @@ border-radius: 3px;
 .last-tickets_price::after {
   display: inline-block;
   color: #928F94;
-  font-weight: 200;
+  font-weight: 300;
 }
 .last-tickets_price::before {
   content: 'от';
@@ -1704,7 +1704,7 @@ color: #292929;
 }
 .seats-info_title {
   font-size: 13px;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 
@@ -1826,7 +1826,7 @@ width: 50%;
   z-index: 10;
   color: #292929;
   font-size: 14px;
-  font-weight: 200;
+  font-weight: 300;
   line-height: 1.2;
   padding: 5px;
 }
@@ -1960,7 +1960,7 @@ width: 50%;
 .train-details span {
   margin-top: 20px;
   display: inline-block;
-  font-weight: 200;
+  font-weight: 300;
   text-transform: capitalize;
 }
 .train-details div:last-child {
@@ -1980,7 +1980,7 @@ width: 50%;
 .time-details_arrow {
   position: relative;
   bottom: 20px;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 13px;
   text-align: center;
 }
@@ -2006,7 +2006,7 @@ width: 50%;
   display: block;
 }
 .direction-details_station {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 12px;
   width: 80px;
 }
@@ -2071,7 +2071,7 @@ width: 50%;
   height: 38px;
   width: 230px;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 300;
   cursor: pointer;
   border: 1px solid #928F94;
   border-radius: 3px;
@@ -2136,7 +2136,7 @@ width: 50%;
 .passengers-card_form label,
 .order-details label {
   font-size: 13px;
-  font-weight: 200;
+  font-weight: 300;
   margin-top: 30px;
 }
 .order-details input, 
@@ -2149,7 +2149,7 @@ width: 50%;
   padding: 8px;
   width: 200px;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 300;
   margin-right: 30px;
   box-sizing: content-box;
 }
@@ -2432,7 +2432,7 @@ color: #292929;
 }
 .passenger-info_other {
   color: #928F94;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 
@@ -2587,7 +2587,7 @@ color: #292929;
   margin-right: 20px;
   height: 100%;
   line-height: 100px;
-  font-weight: 200;
+  font-weight: 300;
 }
 .rating_stars {
   display: inline-block;

@@ -47,7 +47,7 @@ const TypeaheadInput = (props) => {
       <span className="trainpicker__hint">
         <span className="trainpicker__hint-transparent">{hint.slice(0, inputValue.length)}</span>{hint.slice(inputValue.length)}
       </span>
-      <input className="trainpicker__input trainpicker__input-direction" /* value={inputValue}  */onChange={handleInput} type="text" placeholder={placeholder} />
+      <input className="trainpicker__input trainpicker__input-direction" value={inputValue} onChange={handleInput} type="text" placeholder={placeholder} />
       <i class="material-icons trainpicker__icon">room</i>
       {cities.length > 0 ? 
         <ul class="suggestions" onClick={handleSelect}>
