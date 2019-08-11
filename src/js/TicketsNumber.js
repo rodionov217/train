@@ -59,7 +59,7 @@ const TicketsNumber = ({passengers, setAdultSeats, setChildrenSeats, setChildren
           <div class="tickets-number_hint">
             {4 - passengers.adults - passengers.children > 0 ? 
               `Можно добавить еще ${4 - passengers.adults - passengers.children} детей до 10 лет` :
-              "В сумме со взрослыми 4 билета уже выбрано"
+              "4 билета уже выбрано"
             }
           </div>
         </div>
