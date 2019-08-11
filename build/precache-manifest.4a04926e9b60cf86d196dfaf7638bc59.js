@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/train/static/media/train-station.7cf8c800.png"
   },
   {
-    "revision": "066d088e625b3430f89daef4edf547e4",
+    "revision": "032889fea730834de87a48c0e4a45767",
     "url": "/train/index.html"
   }
 ];
