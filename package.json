@@ -5,6 +5,7 @@
     "type": "git",
     "url": "https://github.com/rodionov217/train.git"
   },
+  "homepage": "https://github.com/rodionov217/train",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^1.3.5",
@@ -12,6 +13,7 @@
     "@material-ui/lab": "^4.0.0-alpha.18",
     "@material/textfield": "^1.1.1",
     "date-fns": "^2.0.0-alpha.27",
+    "gh-pages": "^2.1.1",
     "grunt-cli": "^1.3.2",
     "ion-rangeslider": "^2.3.0",
     "jquery": "^3.4.1",
@@ -33,7 +35,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "api": "babel-node docs/app.js"
+    "api": "babel-node docs/app.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+
   },
   "eslintConfig": {
     "extends": "react-app",

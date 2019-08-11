@@ -37,7 +37,7 @@ const App = () => {
       })
 
       return (
-        <BrowserRouter >
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
         <ApiServiceContext.Provider value={apiService}>
           <HeaderComponent 
             homepageRefs={homapageRefs}
