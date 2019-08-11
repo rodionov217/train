@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "324a19f0319b53e91c30942a2d890fab",
-    "url": "/train/static/media/car-scheme-fourth.324a19f0.png"
+    "revision": "bf0a1720992e1094bfe578824debc55f",
+    "url": "/train/static/media/paypal.bf0a1720.png"
   },
   {
     "revision": "fc63036a213e0f9d81dd",
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/train/static/media/car-scheme.0967c085.png"
   },
   {
-    "revision": "bf0a1720992e1094bfe578824debc55f",
-    "url": "/train/static/media/paypal.bf0a1720.png"
+    "revision": "324a19f0319b53e91c30942a2d890fab",
+    "url": "/train/static/media/car-scheme-fourth.324a19f0.png"
   },
   {
     "revision": "fc63036a213e0f9d81dd",
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/train/static/media/train-station.7cf8c800.png"
   },
   {
-    "revision": "e4b5596770c3d7482162dba163e6cfb6",
+    "revision": "066d088e625b3430f89daef4edf547e4",
     "url": "/train/index.html"
   }
 ];
