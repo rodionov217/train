@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/train/static/media/paypal.bf0a1720.png"
   },
   {
-    "revision": "9f496d13a50332666020",
+    "revision": "bc29b3b025cb9e40e19d",
     "url": "/train/static/css/main.88334561.chunk.css"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/train/static/media/car-scheme-fourth.324a19f0.png"
   },
   {
-    "revision": "9f496d13a50332666020",
-    "url": "/train/static/js/main.69252bef.chunk.js"
+    "revision": "bc29b3b025cb9e40e19d",
+    "url": "/train/static/js/main.97689668.chunk.js"
   },
   {
     "revision": "38126df2e9f6d6fa73c913f9ccd5bba8",
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/train/static/media/train-station.7cf8c800.png"
   },
   {
-    "revision": "d80f2c4563227eddc9e30a46f8b436bf",
+    "revision": "650a261fa6ef246455c702f42743fc28",
     "url": "/train/index.html"
   }
 ];
