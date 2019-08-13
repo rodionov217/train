@@ -29,18 +29,10 @@ const App = () => {
       const [currentTrain, setCurrentTrain] = useState(JSON.parse(sessionStorage.currentTrain));
       const [trains, setTrains] = useState([]);
 
-      const [homapageRefs, setHomepageRefs] = useState({
-        about: 700,
-        how: 1100,
-        reviews: 1700,
-        contacts: 2300
-      })
-
       return (
         <BrowserRouter basename={process.env.PUBLIC_URL+'/'}>
         <ApiServiceContext.Provider value={apiService}>
           <HeaderComponent 
-            homepageRefs={homapageRefs}
             setSearchParams={params => {
               setSearchParams(params);
               sessionStorage.searchParams = JSON.stringify(params);
@@ -66,7 +58,7 @@ const App = () => {
             <Route path='/passengers' component={PassengersPage}/>
             <Route path='/confirmation' component={ConfirmationPage}/>
             <Route path='/success' component={SuccessPage}/>
-            <Route path='/' exact render={props => <Homepage {...props} setHomepageRefs={setHomepageRefs}/>} />
+            <Route path='/' exact render={props => <Homepage {...props}/>} />
           </Switch>
           <Footer/>
           </ApiServiceContext.Provider>
