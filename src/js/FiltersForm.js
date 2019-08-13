@@ -46,12 +46,23 @@ const FiltersForm = (props) => {
     /* api.getRoutes(params)
       .then(response => props.setTrains(response.items)) */;
   }
+let formref;
+  const handleDropdownFilter = () => {
+    formref.classList.toggle('minimized');
+  }
 
-  console.log(params.filters);
   return (
-    <form action="" class="search-form ">
-         <fieldset class="search-form__set" >
-           <div class="date-filter" >
+    <div class="filters-container">
+      <div onClick={handleDropdownFilter} class="filter-cog">
+            <i class="fas fa-cog"></i>
+            <i class="far fa-window-close hidden"></i>
+          </div>
+    <form ref={el => formref = el} action="" class="search-form minimized">
+         <fieldset onClick={handleDropdownFilter} class="search-form__set" >
+
+         <h2>Фильтр</h2>
+         
+           {/* <div class="date-filter" >
               <label class="trainpicker_label">Дата поездки</label>
               <Datepicker 
                   style={{width: "240px", height: "50px"}} 
@@ -61,7 +72,7 @@ const FiltersForm = (props) => {
                   defaultDate={new Date()}
                   />
               
-           </div>
+           </div> */}
          </fieldset>
          <fieldset class="seat-types">
            <Switches 
@@ -124,9 +135,12 @@ const FiltersForm = (props) => {
               prettify={n => n + ':00'}/>
 
          </fieldset>
-        <button onClick={addFilters} class="filters__button">Применить</button>
-        <button onClick={resetFilters} class="filters__button">Сбросить</button>
+         <fieldset class="filters__buttons">
+            <button onClick={addFilters} class="filters__button">Применить</button>
+            <button onClick={resetFilters} class="filters__button">Сбросить</button>
+         </fieldset>
        </form>
+      </div>
   )
 }
 
