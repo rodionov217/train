@@ -3,25 +3,31 @@ import { CurrentTrain } from './CurrentTrain';
 
 const TripDetails = (props) => {
   const data = JSON.parse(sessionStorage.currentTrain);
-  const travelDate = new Date(sessionStorage.travelDate);
+  const travelDate = new Date(JSON.parse(sessionStorage.searchParams).date);
+  const arrivalDate = new Date(travelDate);
+  arrivalDate.setHours(arrivalDate.getHours() + (new Date(data.duration * 1000)).getHours());
+  console.log(arrivalDate);
   return (
     <div class="trip-details">
         <h2>Детали поездки</h2>
         <div class="trip-details_to">
 
-          <div class="trip-details_title">
+        <div class="trip-details_title">
             <h3  class="trainpicker_label trainpicker_label-to">Отправление</h3>
-          </div>
-          <div class="trip-details_date">{travelDate.toLocaleDateString()}</div>
+        </div>
+          <div class="trip-details_date"></div>
 
           <div class="train-details">
             <div>
+              <span>Дата</span>
               <span>№ Поезда</span>
-              <span>Название</span>
+              <span>Маршрут</span>
             </div>
             <div>
+              <span>{travelDate.toLocaleDateString()}</span>
+             
               <span><b>{data.train.name}</b></span>
-              <br/>
+              
               <span>
                 <b>
                 {data.from.city.name}<br/>
@@ -33,13 +39,13 @@ const TripDetails = (props) => {
             
             <div class="time-details">
               <div>
-                <span class="time-details_time">{(new Date(data.from.datetime)).toLocaleTimeString('ruRu', {hour: '2-digit', minute: '2-digit'})}</span>
+                <span class="time-details_time">{(new Date(data.from.datetime * 1000)).toLocaleTimeString('ruRu', {hour: '2-digit', minute: '2-digit'})}</span>
                 <span class="time-details_date">{travelDate.toLocaleDateString()}</span>
               </div>
-              <div class="time-details_arrow">9:42</div>
+              <div class="time-details_arrow">{Math.floor(data.duration  / 60 / 60) + ":" +  Math.floor((data.duration / 60) % 60) }</div>
               <div>
-                <span class="time-details_time">{(new Date(data.to.datetime)).toLocaleTimeString('ruRu', {hour: '2-digit', minute: '2-digit'})}</span>
-                <span class="time-details_date">{travelDate.toLocaleDateString()}</span>
+                <span class="time-details_time">{(new Date(data.to.datetime * 1000)).toLocaleTimeString('ruRu', {hour: '2-digit', minute: '2-digit'})}</span>
+                <span class="time-details_date">{arrivalDate.toLocaleDateString()}</span>
               </div>
             </div>
             <div class="direction-details">
@@ -51,7 +57,7 @@ const TripDetails = (props) => {
               <div>
                 <span class="direction-details_city">{data.to.city.name}</span>
                 <br/>
-                <span class="direction-details_station">{data.from.railway_station_name}</span>
+                <span class="direction-details_station">{data.to.railway_station_name}</span>
               </div>
             </div>
         </div>{/* <!-- end of trip-details-to --> */}

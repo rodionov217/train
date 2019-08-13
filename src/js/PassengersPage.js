@@ -181,7 +181,7 @@ const PassengerCard = ({open, passenger, child, adult, valid, setValid, setPasse
               <input value={patronymic} onChange={handleInput} type="text" name="patronymic" class="passengers-card_patronymic-name" id=""/>
             </label>
           </div>
-          <div>
+          <div class="personal-details">
             <label class="gender_label" for="gender">Пол <br/>
               <input onChange={() => setGender("мужской")} defaultChecked value="М" type="radio" class="gender" name="gender" id="gender"/>
               <input onChange={() => setGender("женский")} value="Ж" type="radio" class="gender" name="gender" id="gender"/>

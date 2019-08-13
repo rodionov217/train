@@ -51,6 +51,7 @@ const materialTheme = createMuiTheme({
         'borderRadius': '3px',
         width: '100%',
         boxSizing: 'border-box',
+        height: '50px'
       },
       /* меняем стили инпута */
       input: {

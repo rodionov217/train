@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { is } from 'date-fns/esm/locale';
 
 const CarType = (props) => {
   const {currentType, coaches, setCurrentType, currentCoach, setCurrentCoach} = props;
@@ -23,7 +22,7 @@ const CarType = (props) => {
 
   return (
     <div class="car-type">
-      <h2>Тип вагона</h2>
+      <h2>Выберите тип вагона</h2>
       <ul class="car-type_icons">
         {<li onClick={handleTypeChange} data-type="fourth" class={"car-type_item car-type_item-fourth-class " + isActive('fourth') }>Сидячий</li>}
         <li onClick={handleTypeChange} data-type="third" class={"car-type_item car-type_item-third-class " + isActive('third')}>Плацкарт</li>
@@ -55,7 +54,7 @@ const CarType = (props) => {
         </div>
         <div class="seats-info">
           <div>
-            <span class="seats-info_title">Места:</span>
+            <span class="seats-info_title">Выберите места:</span>
             {currentType === "second" || currentType === "third" ? 
             <Fragment>
               <span>Верхние</span>

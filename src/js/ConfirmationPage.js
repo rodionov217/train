@@ -19,7 +19,7 @@ const ConfirmationPage = (props) => {
         return "PayPal";
       case "credit-card":
         return "Банковской картой";
-      case "qiwi":
+      case "qiwi-wallet":
         return "Visa QIWI Wallet";
       default:
         return;

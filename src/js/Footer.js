@@ -47,27 +47,32 @@ const Footer = () => {
         <h3 class="footer__title">Подписка</h3>
         <form onSubmit={handleSubmit} action="" class="subscription-form">
           <label class="subscription-form__label">Будьте в курсе событий</label>
-            <input value={email} onChange={handleInput} class="subscription-form__input" type="email" name="subscription" placeholder="e-mail"/>
+            <div><input value={email} onChange={handleInput} class="subscription-form__input" type="email" name="subscription" placeholder="e-mail"/>
+            <div style={{visibility: showHint ? "visible" : "hidden" }} class="subscription_hint">Введите корректный email в формате email@mail.ru</div></div>
           <button class="subscription-form__button"  type="submit">Отправить</button>
-            <div style={{visibility: showHint ? "visible" : "hidden" }} class="subscription_hint">Введите корректный email в формате email@mail.ru</div>
             <div style={{visibility: showThankYou ? "visible" : "hidden"}} class="subscription_thankyou">Спасибо за подписку!</div>
         </form>
         <h3 class="footer__title">Подписывайтесь на нас</h3>
         <ul class="social">
           <li class="social__item">
             <a href="" class="social__link social__link-youtube">
+            <i class="fab fa-youtube"></i>
               </a></li>
           <li class="social__item">
             <a href="" class="social__link social__link-linkedIn">
+            <i class="fab fa-linkedin-in"></i>
               </a></li>
           <li class="social__item">
             <a href="" class="social__link social__link-googlePlus">
+            <i class="fab fa-google-plus-g"></i>
               </a></li>
           <li class="social__item">
             <a href="" class="social__link social__link-facebook">
+            <i class="fab fa-facebook-f"></i>
               </a></li>
           <li class="social__item">
             <a href="" class="social__link social__link-twitter">
+            <i class="fab fa-twitter"></i>
               </a></li>
         </ul>
       </div>

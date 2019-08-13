@@ -47,7 +47,7 @@ const PaymentPage = (props) => {
   }
 
   
-  const isEmailValid = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(email);
+  const isEmailValid = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,10}$/i.test(email);
 
   const isPhoneIncomplete = /_/.test(phone);
   
@@ -61,7 +61,7 @@ const PaymentPage = (props) => {
       <div class="col-right">
       <div class="order">
         <form class="order-details" id="order-details">
-          <div class="order_title">Персональные данные</div>
+          <div class="order_title">Персональные данные плательщика</div>
             <fieldset class="order_payer">
               <div class="personal-details">
                   <label for="last-name">Фамилия
@@ -80,7 +80,7 @@ const PaymentPage = (props) => {
                     {isPhoneIncomplete ? <div style={{color: "red"}}>Введите 10 цифр номера телефона без +7 и пробелов в формате 987 654 3210</div> : ""}
                   </label>
                   <label for="">Email
-                    <input value={email} onChange={handleEmail} type="email" name="email" id="" placeholder="email@mail.ru"/>
+                    <input value={email} onChange={handleEmail} type="email" name="email" placeholder="email@mail.ru" class="passengers-card_email" style={{textTransform: "none"}}/>
                     {isEmailValid ? "" : <div style={{color: "red"}}>Введите корректный email в формате email@mail.ru</div>}
                   </label>
               </div>

@@ -36,7 +36,7 @@ const SeatsPage = (props) => {
 }, [id]);
   return currentType &&  data ? (
     
-    <div style={{"margin": "auto", "width": "830px"}}>
+    <div>
     <div class="seats-choice" >
       <div class="change-train change-train-to">
         <span class="change-train_arrow">

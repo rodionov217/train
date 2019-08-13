@@ -17,6 +17,11 @@ const Pagination = (props) => {
     } else {
       setCurrentPage(+event.target.textContent)
     }
+    const beginning = document.querySelector('.col-right').offsetTop;
+    window.scrollTo({
+      top: beginning,
+      behavior: 'smooth'
+    })
   }
   return count > 0 && trains.length > 0 ? (
     <div class="pagination" onClick={handleClick}>

@@ -21,8 +21,28 @@ const MainSearchForm = (props) => {
     setToName(fromName);
   }
 
+  const handleSubmit = () => {
+    props.setSearchParams({
+      from: {
+        name: fromName,
+        id: fromId
+      },
+      to: {
+        name: toName,
+        id: toId 
+      },
+      date: date.toISOString().substr(0, 10),
+      dateBack: dateBack && dateBack.toISOString().substr(0, 10)
+    });
+    window.scrollTo({
+      top: document.querySelector('.col-right').offsetTop,
+      behavior: 'smooth'
+    })
+  }
+
     return (
       <form  class={`trainpicker ${horizontal ? 'trainpicker-horizontal' : ''}`}>
+        {horizontal ? null : <div><h2 class="trainpicker__header">Укажите направление и дату поездки:</h2></div>}
             <div class={`trainpicker__content ${horizontal ? 'trainpicker__content-horizontal' : ''} `}>
               <label class="trainpicker_label">Направление</label>
               <div class="trainpicker__inputs">
@@ -49,7 +69,7 @@ const MainSearchForm = (props) => {
               <label class="trainpicker_label">Дата</label>
               <div class="trainpicker__inputs" >
                 <Datepicker 
-                  style={{width: "285px", height: "50px"}} 
+                  style={{width: "285px", height: "52px"}} 
                   onDateSelect={date => {
                     sessionStorage.travelDate = date;
                     setDate(date)}}
@@ -62,20 +82,7 @@ const MainSearchForm = (props) => {
               <button onClick={e => e.preventDefault()} type="submit" disabled={!(fromName && toName)} className={`trainpicker__button ${horizontal ? 'trainpicker__button-horizontal' : ''} `}>
                 {fromName && toName ? 
                   <Link to='/search'
-                    onClick={() => {
-                      props.setSearchParams({
-                        from: {
-                          name: fromName,
-                          id: fromId
-                        },
-                        to: {
-                          name: toName,
-                          id: toId 
-                        },
-                        date: date.toISOString().substr(0, 10),
-                        dateBack: dateBack && dateBack.toISOString().substr(0, 10)
-                      })
-                    }}>Найти билеты</Link> :
+                    onClick={handleSubmit}>Найти билеты</Link> :
                   "Найти билеты" }
               </button>
             
