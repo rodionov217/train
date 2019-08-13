@@ -4,8 +4,6 @@ import ruLocale from "date-fns/locale/ru";
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 
-
-
 const materialTheme = createMuiTheme({
   overrides: {
     MuiPickersCalendarHeader: {
@@ -55,12 +53,9 @@ const materialTheme = createMuiTheme({
       },
       /* меняем стили инпута */
       input: {
-       /*  boxSizing: 'border-box', */
         fontSize: '16px',
         fontWeight: '100',
-        /* padding: '3px 0 3px 10px', */
         padding: '0 0 0 10px',
-        /* height: '30px', */
         width: '100%',
         border: 0,
         outline: 'none',
@@ -121,7 +116,6 @@ const Datepicker = (props) => {
       <div className="picker" style={props.style}>
         <InlineDatePicker
           keyboard
-          
           clearable
           onlyCalendar
           disableOpenOnEnter
@@ -133,7 +127,6 @@ const Datepicker = (props) => {
           maxDateMessage="Введите корректную дату рождения"
           variant="outlined"
           InputAdornmentProps={adornment}
-          /* VALUE тут! */
           value={selectedDate}
           onChange={handleSelect}
           format="dd/MM/yyyy"

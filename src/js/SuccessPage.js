@@ -36,31 +36,31 @@ const SuccessPage = (props) => {
   }, []);
 
   return (
-    <div class="success">
-      <h1 class="success_title">Благодарим Вас за заказ!</h1>
-      <div class="success_banner">
-        <div class="success_order">
-          <div class="success_id">№ Заказа 285АА</div>
-          <div class="success_price">{price.toLocaleString()}</div>
+    <div className="success">
+      <h1 className="success_title">Благодарим Вас за заказ!</h1>
+      <div className="success_banner">
+        <div className="success_order">
+          <div className="success_id">№ Заказа 285АА</div>
+          <div className="success_price">{price.toLocaleString()}</div>
         </div>
 
-        <ul class="success_icons">
-          <li class="success_item">
-            <span class="success_icon success_icon-computer"></span>
-            <span class="success_text">билеты будут отправлены на ваш e-mail</span>
+        <ul className="success_icons">
+          <li className="success_item">
+            <span className="success_icon success_icon-computer"></span>
+            <span className="success_text">билеты будут отправлены на ваш e-mail</span>
           </li>
-          <li class="success_item">
-            <span class="success_icon success_icon-tickets"></span>
-            <span class="success_text">распечатайте и сохраняйте билеты до даты поездки</span>
+          <li className="success_item">
+            <span className="success_icon success_icon-tickets"></span>
+            <span className="success_text">распечатайте и сохраняйте билеты до даты поездки</span>
           </li>
-          <li class="success_item">
-            <span class="success_icon success_icon-conductor"></span>
-            <span class="success_text">предьявите распечатанные билеты при посадке</span>
+          <li className="success_item">
+            <span className="success_icon success_icon-conductor"></span>
+            <span className="success_text">предьявите распечатанные билеты при посадке</span>
           </li>
         </ul>
 
-        <div class="success-info">
-          <h2 class="success-info_title">{payer.first_name + " " + payer.patronymic + "!"}</h2>
+        <div className="success-info">
+          <h2 className="success-info_title">{payer.first_name + " " + payer.patronymic + "!"}</h2>
           <p>
             Ваш заказ успешно оформлен. <br/>
             В ближайшее время с вами свяжется наш оператор для подтверждения.
@@ -68,8 +68,8 @@ const SuccessPage = (props) => {
           <h3>Благодарим за оказанное доверие и желаем приятного путешествия!</h3>
         </div>
 
-        <div class="rating">
-          <span class="rating_text">Оценить сервис</span>
+        <div className="rating">
+          <span className="rating_text">Оценить сервис</span>
           <Stars />
         </div>
       </div>
@@ -87,7 +87,7 @@ const Stars = () => {
     setRating(event.currentTarget.dataset.id);
   };
   return (
-    <div class="rating_stars">
+    <div className="rating_stars">
       {starList.map((el, i) => <Star index={i} rating={rating} onClick={handleClick}/>)}
     </div>
   )

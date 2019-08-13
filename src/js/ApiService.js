@@ -1,5 +1,4 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import React from 'react';
 
 export const ApiContext = React.createContext();
 
@@ -11,12 +10,15 @@ export class ApiService {
     } 
     return await res.json()
   }
+
   getCities = async (query) => {
     return await this.fetchData(`/routes/cities?name=${query}`)
   }
+
   getRoutes = async (params, sortBy, limit, offset) => {
     return await this.fetchData(`/routes?from_city_id=${params.from.id}&to_city_id=${params.to.id}&sort=${sortBy}&limit=${limit}&offset=${offset}&${params.filters || "?"}`)
   }
+
   getSeats = async (id) => {
     return await this.fetchData(`/routes/${id}/seats`)
   }

@@ -2,12 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-/*   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
   box-sizing: border-box;
-  
   background: #e5e5e5;
 }
+
 a {
   color: #FFFFFF;
 }
@@ -40,6 +38,8 @@ button {
 }
 
 
+
+/*~~~~~~~ HEADER & NAV MENU ~~~~~~~~*/
 .header {
   position: absolute;
   width: 100vw;
@@ -95,15 +95,12 @@ font-size: 45px
 }
 
 
-
-
 nav, .nav {
-  
   background: #292929;
   box-sizing: border-box;
-height: 75px;
-list-style: none;
-padding-left: 0;
+  height: 75px;
+  list-style: none;
+  padding-left: 0;
 }
 
 .nav__item {
@@ -122,14 +119,16 @@ padding-left: 0;
   transition: ease-in-out 0.5s;
 }
 
+
+/*~~~~~~~ MAIN SECTION ~~~~~~~*/
+
 .motto {
   font-weight: 300;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-font-size: 54px;
-line-height: normal;
-color: #FFFFFF;
-padding-bottom: 150px;
-
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
+  font-size: 54px;
+  line-height: normal;
+  color: #FFFFFF;
+  padding-bottom: 150px;
 }
 
 .motto-bold {
@@ -139,8 +138,6 @@ padding-bottom: 150px;
 .main__picker, .main__motto {
   margin: 0 auto;
 }
-
-
 
 .main {
   width: 100%;
@@ -153,6 +150,7 @@ align-items: flex-end;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 700px;
+  background-position: center;
 }
 
 .main::after {
@@ -166,6 +164,7 @@ align-items: flex-end;
 }
 
 
+/*~~~~~~~ TRAINPICKER ~~~~~~~*/
 .trainpicker {
   background: rgba(41, 41, 41, 0.8);
   width: 640px;
@@ -325,20 +324,19 @@ align-items: flex-end;
 }
 
 
-
+/* ~~~~~~~~~~~ ABOUT ~~~~~~~~~~~~~ */
 .about {
 
   width: 100%;
-padding: 80px 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-box-sizing: border-box;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .about__text, .about__title {
-  /* margin: 0px auto; */
   width: 750px;
 }
 
@@ -357,9 +355,6 @@ box-sizing: border-box;
   background-color: #FFA800;
   flex-grow: 1;
   z-index: 100;
-
-/*   left: 330px;
-  top: 825px; */
 }
 
 .about__title {
@@ -380,6 +375,8 @@ box-sizing: border-box;
   font-weight: 500;
 }
 
+
+/* ~~~~~~~~~~ FEATURES ~~~~~~~~~ */
 .features {
   box-sizing: border-box;
   padding: 50px;
@@ -483,6 +480,8 @@ color: #FFFFFF;
   background-size: contain;
 }
 
+
+/* ~~~~~~~~~~ REVIEWS ~~~~~~~~~ */
 .reviews {
   padding: 60px 0;
   display: flex;
@@ -504,11 +503,6 @@ color: #FFFFFF;
   text-align: center;
 }
 
-.reviews__title, .reviews__slide {
-
-
-}
-
 .review {
   display: flex;
   flex-direction: row;
@@ -521,7 +515,6 @@ color: #FFFFFF;
 }
 .review__avatar {
   height: 170px;
-  /* width: 120px; */
 }
 .review__author {
   font-weight: 500;
@@ -576,6 +569,9 @@ color: #FFFFFF;
   background-color: #c4c4c4;
 }
 
+
+
+/* ~~~~~~~~~~~ FOOTER ~~~~~~~~~~~~~ */
 .footer {
   background-color: #2D2B2F;
   color: #FFFFFF;
@@ -728,16 +724,13 @@ list-style: none;
   justify-content: space-between;
   align-items: center;
 }
-.footer__logo, .footer__home-arrow, .footer__copyright {
+.footer__logo, .footer__home-arrow {
   width: 150px;
 }
 .footer__copyright {
   font-weight: 100;
 }
-/* .footer__home-arrow {
-  display: flex;
-  justify-content: center;
-} */
+
 .footer__home-arrow {
   background-image: url('./images/home-arrow.png');
   display: block;
@@ -749,12 +742,13 @@ list-style: none;
   cursor: pointer;
 }
 
+
+/* ~~~~~~~ MAIN-SEARCH ~~~~~~~~ */
 .main-search {
   background-image: url('./images/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
- /*  height: 500px; */
   padding-top: 180px; 
   display: flex;
   align-items: flex-end;
@@ -775,7 +769,7 @@ list-style: none;
 }
 
 
-
+/* ~~~~~~~ PROGRESS STEPS ~~~~~~~ */
 .progress {
   background: #3E3C41;
   color: #FFFFFF;
@@ -1002,7 +996,7 @@ border-radius: 3px;
 .irs-from, .irs-to{
   background-color: #FFCA62 !important;
   color: #3E3C41 !important;
-  box-shadow: #c4c4c4 !important;
+  box-shadow: 0 0 0 0.75rem #c4c4c4 !important;
 }
 .irs-from::before, .irs-to::before, .irs-single::before  {
   border-top-color:  #FFCA62 !important;
@@ -1151,7 +1145,6 @@ border-radius: 3px;
   font-weight: 300;
   font-size: 14px;
   text-align: left;
-  align-self: left;
 }
 
 .train-schedule {
@@ -1790,7 +1783,6 @@ color: #292929;
   padding: 15px;
   width: auto;
   overflow: scroll;
-  overscroll-behavior: contain;
 }
 .car-hint {
   text-align: center;
@@ -1816,11 +1808,10 @@ color: #292929;
 }
 
 .scheme_train-second-class, .scheme_train-first-class {
-  /* background-color: rgba(255, 38, 0, 0.19); */
   display: flex;
   position: relative;
   left: 108px;
-  top: 33px;
+  top: 34px;
   max-width: 600px;
 }
 .scheme_room, .scheme_train-side > div {
@@ -1872,7 +1863,6 @@ width: 50%;
   height: 24px;
   width: 27px;
   background-color: #c6c4c4;
-  /* box-shadow: 1px 1px 4px rgba(182, 181, 181, 1); */
   text-align: center;
   font-size: 13px;
   font-weight: 800;
@@ -1964,10 +1954,7 @@ width: 50%;
   height: 48px;
   box-sizing: content-box;
 }
-/* .scheme_train-first-class > .scheme_room > .scheme_seat-chosen {
-  box-sizing: border-box;
-}
- */
+
 .scheme_car-number {
   position: relative;
   top: 10px;
@@ -2408,9 +2395,6 @@ label[for="disabilities"] {
   display: flex;
   justify-content: space-between;
 }
-.personal-details input {
-  display: block;
-}
 .contact-details label {
   display: block;
 }
@@ -2766,6 +2750,9 @@ body {
   display: block;
 }
 
+
+/* ~~~~~~~~~ MEDIA QUERIES ~~~~~~~~~~~ */
+
 @media(max-width: 1260px) {
   .trainpicker__button-horizontal {
     position: relative;
@@ -3003,6 +2990,13 @@ display: none;
   .success_icons {
     flex-wrap: wrap;
   }
+  .success_icon {
+    width: 70px;
+    height: 70px;
+  }
+  .success_text {
+    width: auto;
+  }
   .seat-types > div {
     flex-wrap: nowrap;
     flex-direction: column;
@@ -3017,10 +3011,3 @@ display: none;
     justify-content: center;
   }
 }
-
-
-
-
-
-
-

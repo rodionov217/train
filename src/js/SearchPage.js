@@ -24,19 +24,8 @@ console.log(trains);
   const [offset, setOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [cost, setCost] = useState({from: 500, to: 7000});
-  const [departureTime, setDepartureTime] = useState({from: 0, to: 24});
-  const [arrivalTime, setArrivalTime] = useState({from: 0, to: 24});
-  const [first, setFirst] = useState(false);
-  const [second, setSecond] = useState(false);
-  const [third, setThird] = useState(false);
-  const [fourth, setFourth] = useState(false);
-  const [express, setExpress] = useState(false);
-  const [wifi, setWifi] = useState(false);
-
   const update = (filters) => {
     params.filters = filters; 
-
     api.getRoutes(params, sortBy, limit, offset)
     .then(response => {
         sessionStorage.trains = JSON.stringify(response.items);
@@ -48,25 +37,7 @@ console.log(trains);
         } 
       }
     );
-
   }
-
-/*   const handleTime = (departureTime, arrivalTime) => {
-    console.log(trains);
-
-    const isInTimeRange = train => {
-      const trainDeparture = (new Date(train.departure.from.datetime * 1000)).getHours();
-      const trainArrival = (new Date(train.departure.to.datetime * 1000)).getHours();
-      
-      console.log(trainDeparture, trainArrival);
-      return trainDeparture >= departureTime.from && trainDeparture <= departureTime.to;
-    }
-    //isInTimeRange(trains[0]);
-    let sortedTrains = trains.filter(isInTimeRange);
-    
-    console.log(sortedTrains)
-    //setTrains(sortedTrains);
-  } */
 
   useEffect(() => {
     update();
@@ -101,33 +72,30 @@ console.log(trains);
 
   return  (
     <Fragment>
-      <section class="columns">
-        <div class="col-left">
-          <FiltersForm {...props}
-            /* handleTime={handleTime} */
-            update={update}
-            />
+      <section className="columns">
+        <div className="col-left">
+          <FiltersForm {...props} update={update} />
           <LastTickets />
         </div>
-        <div class="col-right">
-          <div class="results-display">
-            <div class="trains-count">
-              <span class="results-option">Найдено</span>
+        <div className="col-right">
+          <div className="results-display">
+            <div className="trains-count">
+              <span className="results-option">Найдено</span>
               <span>{count}</span>
             </div>
-            <div class="sort">
-              <span class="results-option">сортировать по:</span>
-              <ul onClick={handleSortBy} class="sort_list">
-                <li class="sort-by" data-sort="date">отправлению</li>
-                <li class="sort-by sort-by-current" data-sort="duration">длительности</li>
+            <div className="sort">
+              <span className="results-option">сортировать по:</span>
+              <ul onClick={handleSortBy} className="sort_list">
+                <li className="sort-by" data-sort="date">отправлению</li>
+                <li className="sort-by sort-by-current" data-sort="duration">длительности</li>
               </ul>
             </div>
-            <div class="limit">
-              <span class="results-option">показывать по:</span>
-              <ul class="limit_list" onClick={handleLimit}>
-                <li class="limit-by limit-by-current" data-limit={5}>5</li>
-                <li class="limit-by" data-limit={10}>10</li>
-                <li class="limit-by" data-limit={20}>20</li>
+            <div className="limit">
+              <span className="results-option">показывать по:</span>
+              <ul className="limit_list" onClick={handleLimit}>
+                <li className="limit-by limit-by-current" data-limit={5}>5</li>
+                <li className="limit-by" data-limit={10}>10</li>
+                <li className="limit-by" data-limit={20}>20</li>
               </ul>
             </div>
           </div>
@@ -136,7 +104,7 @@ console.log(trains);
                                 departure={train.departure} 
                                 currentTrain={props.currentTrain} 
                                 setCurrentTrain={props.setCurrentTrain}/>) :
-            showNotice ? <div class="not-found-notice">К сожалению, ничего не найдено. Попробуйте изменить параметры поиска.</div> : <div class="loader"><div class="loader_image"></div></div>
+            showNotice ? <div className="not-found-notice">К сожалению, ничего не найдено. Попробуйте изменить параметры поиска.</div> : <div className="loader"><div className="loader_image"></div></div>
           }
 
           <Pagination 

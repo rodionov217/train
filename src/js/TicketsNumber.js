@@ -31,17 +31,17 @@ const TicketsNumber = ({passengers, setAdultSeats, setChildrenSeats, setChildren
     }
   }
   return (
-    <div class="tickets-number">
+    <div className="tickets-number">
       <h2>Количество билетов</h2>
-      <form class="tickets-number_boxes">
-        <div class="tickets-number_box">
-          <div class="tickets-number_count">
+      <form className="tickets-number_boxes">
+        <div className="tickets-number_box">
+          <div className="tickets-number_count">
             <div className="tickets-number_title">Взрослых:</div> 
             <span className="tickets-number_control dec" data-op="dec" data-name="adults" onClick={handleChange}>–</span>
             <span className="tickets-number_counter">{passengers.adults}</span>
             <span className="tickets-number_control inc" data-op="inc" data-name="adults" onClick={handleChange}>+</span>
           </div>
-          <div class="tickets-number_hint">
+          <div className="tickets-number_hint">
             {4 - passengers.adults - passengers.children > 0 ? 
             `Можно добавить еще ${4 - passengers.adults - passengers.children} пассажиров` :
             "В одном заказе можно оформить не больше 4 билетов"
@@ -49,31 +49,20 @@ const TicketsNumber = ({passengers, setAdultSeats, setChildrenSeats, setChildren
             </div>
         </div>
 
-        <div class="tickets-number_box">
-          <div class="tickets-number_count">
+        <div className="tickets-number_box">
+          <div className="tickets-number_count">
             <div className="tickets-number_title">Детских: </div>
             <span className="tickets-number_control dec" data-op="dec" data-name="children" onClick={handleChange}>–</span>
             <span className="tickets-number_counter">{passengers.children}</span>
             <span className="tickets-number_control inc" data-op="inc" data-name="children" onClick={handleChange}>+</span>
           </div>
-          <div class="tickets-number_hint">
+          <div className="tickets-number_hint">
             {4 - passengers.adults - passengers.children > 0 ? 
               `Можно добавить еще ${4 - passengers.adults - passengers.children} детей до 10 лет` :
               "4 билета уже выбрано"
             }
           </div>
         </div>
-
-        {/* <div class="tickets-number_box">
-          <div class="tickets-number_count">
-            <div className="tickets-number_title">Детских без места: </div>
-            <span className="tickets-number_control dec" data-op="dec" data-name="childrenWithoutSeats" onClick={handleChange}>–</span>
-            <span className="tickets-number_counter">{passengers.childrenWithoutSeats}</span>
-            <span className="tickets-number_control inc" data-op="inc" data-name="childrenWithoutSeats" onClick={handleChange}>+</span>
-          </div>
-          <div class="tickets-number_hint">С одним взрослым пассажиром может поехать только один ребенок без места
-          Ребенок едет на одном месте со взрослым, зато бесплатно </div>
-        </div> */}
       </form>
     </div>
   )

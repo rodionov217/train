@@ -13,17 +13,12 @@ const TypeaheadInput = (props) => {
   useEffect(() => {
     if (props.value !== inputValue) {
       setInputValue(props.value);
-      //setHint(props.value);
-      console.log('EFFECT')
     }
-  }, [props.value]);
+  }, [props.value, inputValue]);
 
   const handleFocus = (event) => {
-    console.log('FOCUS');
     const value = event.currentTarget.value || 'а';
     api.getCities(value).then(response => {
-      //console.log('request', value, response);
-      let newHint = response.length > 0 ? response.find(el => el.name.startsWith(value)) : '';
       setHint('');
       setShowSuggestions(true);
       setCities(response);
@@ -31,13 +26,11 @@ const TypeaheadInput = (props) => {
   }
 
   const handleBlur = () => {
-    setShowSuggestions(false);
+    setTimeout(() => setShowSuggestions(false), 1000);
   }
-
-
+  
   const handleInput = event => {
     const value = event.currentTarget.value;
-    console.log(value);
     if (value.match(/[^а-яА-я ]/)) {
       return;
     }
@@ -45,26 +38,24 @@ const TypeaheadInput = (props) => {
     setInputValue(value);
 
     api.getCities(value).then(response => {
-     // console.log('request', value, response);
       let newHint = response.length > 0 ? response.find(el => el.name.startsWith(value)) : '';
       setHint(newHint ? newHint.name : '');
       setShowSuggestions(true);
       setCities(response);
-
     });
   }
 
   const handleSelect = event => {
     setInputValue(event.target.textContent);
     setHint('');
-    setShowSuggestions(false);
-
     onSelect({
       name: event.target.textContent, 
       id: event.target.dataset.id
     });
+    setShowSuggestions(false);
   }
-let suggestions, current = -1;
+
+  let suggestions, current = -1;
   const handleKeydown = event => {
     if (!suggestions) {
       return;
@@ -106,15 +97,15 @@ let suggestions, current = -1;
 
   return (
     
-    <div class="input-with-icon">
+    <div className="input-with-icon">
       <span className="trainpicker__hint">
         <span className="trainpicker__hint-transparent">{hint.slice(0, inputValue.length)}</span>{hint.slice(inputValue.length)}
       </span>
       <input className="trainpicker__input trainpicker__input-direction" value={inputValue} onChange={handleInput} onFocus={handleFocus} onBlur={handleBlur} type="text" placeholder={placeholder} onKeyDown={handleKeydown}/>
-      <i class="material-icons trainpicker__icon">room</i>
+      <i className="material-icons trainpicker__icon">room</i>
       {showSuggestions && cities.length > 0 ? 
-        <ul ref={el => suggestions = el} class="suggestions" onClick={handleSelect}>
-          {cities.map(city => <li key={city._id} data-id={city['_id']}>{city.name}</li>)}
+        <ul ref={el => suggestions = el} onClick={handleSelect} className="suggestions" >
+          {cities.map(city => <li key={city._id}  data-id={city['_id']}>{city.name}</li>)}
         </ul> :
         null
       }

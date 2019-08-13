@@ -6,28 +6,27 @@ const CurrentTrain = ({info}) => {
   const travelTimeMinutes = Math.floor((info.duration / 18000) % 1 * 60);
 
   return (
-    <div class="current-train">
-        <div class="train-icon"></div>
-        <div class="train-info">
-          <h4 class="train-info_number">{info.train.name}</h4>
-          <div>
-            <div class="train-info_name">{info.from.city.name}</div>
-            <div class="train-info_name">{info.to.city.name}</div>
-          </div>
-          </div>
-      
+    <div className="current-train">
+      <div className="train-icon"></div>
+      <div className="train-info">
+        <h4 className="train-info_number">{info.train.name}</h4>
+        <div>
+          <div className="train-info_name">{info.from.city.name}</div>
+          <div className="train-info_name">{info.to.city.name}</div>
+        </div>
+        </div>
+
       <TrainSchedule info={info} showTravelTime={false}/>
       
-     <div class="current-train_travel-time">
-        <div class="travel-time_icon"></div>
-        <div class="travel-time_text">
-          <div class="hours">{travelTimeHours} ч</div>
-          <div class="hours">{travelTimeMinutes} мин</div>
+     <div className="current-train_travel-time">
+        <div className="travel-time_icon"></div>
+        <div className="travel-time_text">
+          <div className="hours">{travelTimeHours} ч</div>
+          <div className="hours">{travelTimeMinutes} мин</div>
         </div>
      </div>
     </div>
   )
 }
-
 
 export {CurrentTrain};

@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react';
-import {TypeaheadInput} from './TypeaheadInput'
-import {ApiServiceContext} from './context';
+import { TypeaheadInput } from './TypeaheadInput'
+import { ApiServiceContext } from './context';
 import { Link } from 'react-router-dom';
 import { Datepicker } from './Datepicker';
-
-
 
 const MainSearchForm = (props) => {
   const api = useContext(ApiServiceContext);
@@ -34,18 +32,20 @@ const MainSearchForm = (props) => {
       date: date.toISOString().substr(0, 10),
       dateBack: dateBack && dateBack.toISOString().substr(0, 10)
     });
-    window.scrollTo({
-      top: document.querySelector('.col-right').offsetTop,
-      behavior: 'smooth'
-    })
+    if (props.location.pathname !== '/') {
+      window.scrollTo({
+        top: document.querySelector('.col-right').offsetTop,
+        behavior: 'smooth'
+      })
+    }
   }
 
     return (
-      <form  class={`trainpicker ${horizontal ? 'trainpicker-horizontal' : ''}`}>
-        {horizontal ? null : <div><h2 class="trainpicker__header">Укажите направление и дату поездки:</h2></div>}
-            <div class={`trainpicker__content ${horizontal ? 'trainpicker__content-horizontal' : ''} `}>
-              <label class="trainpicker_label">Направление</label>
-              <div class="trainpicker__inputs">
+      <form  className={`trainpicker ${horizontal ? 'trainpicker-horizontal' : ''}`}>
+        {horizontal ? null : <div><h2 className="trainpicker__header">Укажите направление и дату поездки:</h2></div>}
+            <div className={`trainpicker__content ${horizontal ? 'trainpicker__content-horizontal' : ''} `}>
+              <label className="trainpicker_label">Направление</label>
+              <div className="trainpicker__inputs">
                 <TypeaheadInput 
                   value={fromName}
                   placeholder="Откуда"
@@ -53,8 +53,8 @@ const MainSearchForm = (props) => {
                   setFromName(city.name);
                   setFromId(city.id)
                   }}/>
-                <div onClick={handleSwap} class="trainpicker__reverse" type="checkbox" name="reverse" id="reverse">
-                  <i class="fas fa-exchange-alt"></i>
+                <div onClick={handleSwap} className="trainpicker__reverse" type="checkbox" name="reverse" id="reverse">
+                  <i className="fas fa-exchange-alt"></i>
                 </div>
                 <TypeaheadInput 
                 value={toName}
@@ -65,9 +65,9 @@ const MainSearchForm = (props) => {
                   }}/>
               </div>
             </div>
-            <div class={`trainpicker__content ${horizontal ? 'trainpicker__content-horizontal' : ''} `}>
-              <label class="trainpicker_label">Дата</label>
-              <div class="trainpicker__inputs" >
+            <div className={`trainpicker__content ${horizontal ? 'trainpicker__content-horizontal' : ''} `}>
+              <label className="trainpicker_label">Дата</label>
+              <div className="trainpicker__inputs" >
                 <Datepicker 
                   style={{width: "285px", height: "52px"}} 
                   onDateSelect={date => {
@@ -78,15 +78,13 @@ const MainSearchForm = (props) => {
               </div>
             </div>
             
-            {/* <button onClick={e => e.preventDefault()} type="submit"> */}
-              <button onClick={e => e.preventDefault()} type="submit" disabled={!(fromName && toName)} className={`trainpicker__button ${horizontal ? 'trainpicker__button-horizontal' : ''} `}>
-                {fromName && toName ? 
-                  <Link to='/search'
-                    onClick={handleSubmit}>Найти билеты</Link> :
-                  "Найти билеты" }
-              </button>
+            <button onClick={e => e.preventDefault()} type="submit" disabled={!(fromName && toName)} className={`trainpicker__button ${horizontal ? 'trainpicker__button-horizontal' : ''} `}>
+              {fromName && toName ? 
+                <Link to='/search'
+                  onClick={handleSubmit}>Найти билеты</Link> :
+                "Найти билеты" }
+            </button>
             
-             
           </form>
     )
 }
@@ -95,25 +93,25 @@ const TrainpickerForm = (props) => {
   const path = props.location.pathname;
   if (path === '/success') {
     return (
-      <section class="main-search main-search-success"></section>
+      <section className="main-search main-search-success"></section>
     )
   }
   if (path !== '/') {
     return (
-      <section class="main-search">
+      <section className="main-search">
         <MainSearchForm horizontal {...props}/>
       </section>
       )
   }
   if (path === '/') { 
     return (
-    <section class="main" id="main">
-      <div class="main__motto">
-        <div class="motto">Вся жизнь - 
-          <div class="motto-bold">путешествие!</div> 
+    <section className="main" id="main">
+      <div className="main__motto">
+        <div className="motto">Вся жизнь - 
+          <div className="motto-bold">путешествие!</div> 
         </div>
       </div>
-      <div class="main__picker">
+      <div className="main__picker">
         <MainSearchForm {...props}/>
         
       </div>

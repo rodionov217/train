@@ -2,13 +2,15 @@ import React, { useRef, useState, Fragment, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import { TripDetails } from './TripDetails';
 import MaskedInput from './MaskedInput';
-import {Datepicker} from './Datepicker'
+import {Datepicker} from './Datepicker';
+
 const PassengersPage = (props) => {
   if (props.location.passengers) {
     sessionStorage.passengers = JSON.stringify(props.location.passengers);
     sessionStorage.seats = JSON.stringify(props.location.seats);
     sessionStorage.price = props.location.price;
   }
+
   const passengers = props.location.passengers || JSON.parse(sessionStorage.passengers);
   const price = props.location.price || JSON.parse(sessionStorage.price);
   
@@ -22,11 +24,11 @@ const PassengersPage = (props) => {
   }
   
   return (
-    <div class="columns">
-      <div class="col-left">
+    <div className="columns">
+      <div className="col-left">
         <TripDetails passengers={passengers} price={price}/>
       </div>
-      <div class="col-right">
+      <div className="col-right">
         {(new Array(passengers.adults))
             .fill('')
             .map((p, i) => <PassengerCard 
@@ -48,7 +50,7 @@ const PassengersPage = (props) => {
                               setPassengers={(passenger) => savePassengers(passenger)}/>)}
 
         <Link to='/payment' >
-          <button disabled={valid.length !== passengers.adults + passengers.children}  onClick={() => sessionStorage.passengersList = JSON.stringify(passengersList)} class="to-order-button">Далее</button>
+          <button disabled={valid.length !== passengers.adults + passengers.children}  onClick={() => sessionStorage.passengersList = JSON.stringify(passengersList)} className="to-order-button">Далее</button>
         </Link>
       </div>
     </div>
@@ -102,8 +104,8 @@ const PassengerCard = ({open, passenger, child, adult, valid, setValid, setPasse
       throw new Error("Введите корректное отчество")
     }
   }
-  const isPassportValid = () => {
 
+  const isPassportValid = () => {
     if (isPassportChosen) {
       if (passport1.match(/_/)) {
         throw new Error ("Введите 4 цифры серии паспорта")
@@ -123,26 +125,22 @@ const PassengerCard = ({open, passenger, child, adult, valid, setValid, setPasse
       isNameValid();
       isPassportValid();
     } catch (e) {
-      return <span class="error">{e.message}</span>;
+      return <span className="error">{e.message}</span>;
     }
     if (!valid.find(el => el === passenger)) {
       const validated = valid.slice();
       validated.push(passenger);
       setValid(validated);
     }
-    return <span class="valid">Готово!</span>;
+    return <span className="valid">Готово!</span>;
   }
 
   const isPassportComplete = passport1.replace(/\s|_/g, '').length === 4 && passport2.replace(/\s|_/g, '').length === 6;
-
   const isCertificateComplete = certificate.replace(/\s|_/g, '').length === 12;
-
   const isComplete = firstName && lastName && patronymic && (isPassportComplete || isCertificateComplete) && dateOfBirth;
-
 
   useEffect(() => {
     if (isComplete) {
-      console.log("EFFECT");
       setPassengers({
       name: lastName + " " + firstName + " " + patronymic,
       gender: "Пол " + gender,
@@ -160,33 +158,33 @@ const PassengerCard = ({open, passenger, child, adult, valid, setValid, setPasse
     const minDate = adult ? new Date(today.setYear(today.getFullYear() - 100)) : new Date(today.setYear(today.getFullYear() - 10));
     
     return (
-      <div class="passengers-card passengers-card_open">
-        <div onClick={() => setOpen(!isOpen)} class="passengers-card_title">Пассажир {passenger}</div>
-        <form ref={formRef} action="" class="passengers-card_form">
+      <div className="passengers-card passengers-card_open">
+        <div onClick={() => setOpen(!isOpen)} className="passengers-card_title">Пассажир {passenger}</div>
+        <form ref={formRef} action="" className="passengers-card_form">
         <fieldset>
-          <div class="select-container">
-            <select defaultValue={adult ? "adult" : "child"} class="passengers-card_select" name="" id="">
+          <div className="select-container">
+            <select defaultValue={adult ? "adult" : "child"} className="passengers-card_select" name="" id="">
               <option disabled={child} value="adult">Взрослый</option>
               <option disabled={adult} value="child">Детский</option>
             </select>
           </div>
-          <div class="personal-details">
+          <div className="personal-details">
             <label for="last-name">Фамилия
-              <input value={lastName} onChange={handleInput}  type="text" name="last-name" class="passengers-card_last-name" id=""/>
+              <input value={lastName} onChange={handleInput}  type="text" name="last-name" className="passengers-card_last-name" id=""/>
             </label>
             <label for="first-name">Имя
-              <input value={firstName} onChange={handleInput} type="text" name="first-name" class="passengers-card_name" id=""/>
+              <input value={firstName} onChange={handleInput} type="text" name="first-name" className="passengers-card_name" id=""/>
             </label>
             <label for="patronymic">Отчество
-              <input value={patronymic} onChange={handleInput} type="text" name="patronymic" class="passengers-card_patronymic-name" id=""/>
+              <input value={patronymic} onChange={handleInput} type="text" name="patronymic" className="passengers-card_patronymic-name" id=""/>
             </label>
           </div>
-          <div class="personal-details">
-            <label class="gender_label" for="gender">Пол <br/>
-              <input onChange={() => setGender("мужской")} defaultChecked value="М" type="radio" class="gender" name="gender" id="gender"/>
-              <input onChange={() => setGender("женский")} value="Ж" type="radio" class="gender" name="gender" id="gender"/>
+          <div className="personal-details">
+            <label className="gender_label" for="gender">Пол <br/>
+              <input onChange={() => setGender("мужской")} defaultChecked value="М" type="radio" className="gender" name="gender" id="gender"/>
+              <input onChange={() => setGender("женский")} value="Ж" type="radio" className="gender" name="gender" id="gender"/>
             </label>
-            <label class="birth-picker">
+            <label className="birth-picker">
               Дата рождения 
               <Datepicker
                 minDate={minDate}
@@ -197,15 +195,15 @@ const PassengerCard = ({open, passenger, child, adult, valid, setValid, setPasse
                 onDateSelect={(date) => setDateOfBirth(date.toLocaleDateString())}/>
             </label>
           </div>
-          <div class="disabilities-check">
-            <input checked={disabilities} onChange={() => setDisabilities(!disabilities)} type="checkbox" id="disabilities" class="disabilities"/>
+          <div className="disabilities-check">
+            <input checked={disabilities} onChange={() => setDisabilities(!disabilities)} type="checkbox" id="disabilities" className="disabilities"/>
             <label for="disabilities">ограниченная подвижность</label>
           </div>
         </fieldset>
 
         <fieldset>
           <div>
-            <label class="select-label" for="">
+            <label className="select-label" for="">
               Тип документа
               <select defaultValue={adult ? "паспорт" : "свидетельство"} onChange={() => setIsPassportChosen(!isPassportChosen)}  name="" id="">
                 <option value="паспорт">Паспорт</option>
@@ -232,7 +230,7 @@ const PassengerCard = ({open, passenger, child, adult, valid, setValid, setPasse
         </fieldset>
 
         <fieldset>
-          {firstName && lastName && patronymic && ((passport1 && passport2) || certificate) && dateOfBirth ? <output class="error">{isValid()}</output> : <output><span class="warning">Пожалуйста, заполните все поля формы!</span></output>}
+          {firstName && lastName && patronymic && ((passport1 && passport2) || certificate) && dateOfBirth ? <output className="error">{isValid()}</output> : <output><span className="warning">Пожалуйста, заполните все поля формы!</span></output>}
           
         </fieldset>
       </form>
@@ -240,8 +238,8 @@ const PassengerCard = ({open, passenger, child, adult, valid, setValid, setPasse
     )
   } else {
     return (
-      <div class="passengers-card ">
-        <div onClick={() => setOpen(!isOpen)}  class="passengers-card_title ">Пассажир {passenger}</div>
+      <div className="passengers-card ">
+        <div onClick={() => setOpen(!isOpen)}  className="passengers-card_title ">Пассажир {passenger}</div>
       </div>
     )
   }

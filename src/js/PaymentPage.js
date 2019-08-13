@@ -48,47 +48,45 @@ const PaymentPage = (props) => {
 
   
   const isEmailValid = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,10}$/i.test(email);
-
   const isPhoneIncomplete = /_/.test(phone);
-  
   const isNameComplete = firstName && lastName && patronymic;
   
   return (
-    <div class="columns">
-      <div class="col-left">
+    <div className="columns">
+      <div className="col-left">
         <TripDetails passengers={passengers} price={price}/>
       </div>
-      <div class="col-right">
-      <div class="order">
-        <form class="order-details" id="order-details">
-          <div class="order_title">Персональные данные плательщика</div>
-            <fieldset class="order_payer">
-              <div class="personal-details">
+      <div className="col-right">
+      <div className="order">
+        <form className="order-details" id="order-details">
+          <div className="order_title">Персональные данные плательщика</div>
+            <fieldset className="order_payer">
+              <div className="personal-details">
                   <label for="last-name">Фамилия
-                    <input required value={lastName} onChange={handleInput} type="text" name="last-name" class="passengers-card_last-name" id=""/>
+                    <input required value={lastName} onChange={handleInput} type="text" name="last-name" className="passengers-card_last-name" id=""/>
                   </label>
                   <label for="first-name">Имя
-                    <input required value={firstName} onChange={handleInput} type="text" name="first-name" class="passengers-card_name" id=""/>
+                    <input required value={firstName} onChange={handleInput} type="text" name="first-name" className="passengers-card_name" id=""/>
                   </label>
                   <label for="patronymic">Отчество
-                    <input required value={patronymic} onChange={handleInput} type="text" name="patronymic" class="passengers-card_patronymic-name" id=""/>
+                    <input required value={patronymic} onChange={handleInput} type="text" name="patronymic" className="passengers-card_patronymic-name" id=""/>
                   </label>
               </div>
-              <div class="contact-details">
+              <div className="contact-details">
                   <label for="">Контактный телефон
                     <MaskedInput  value={phone} onChange={value => setPhone(value)} prefix="+7" inputmask={['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}/>
                     {isPhoneIncomplete ? <div style={{color: "red"}}>Введите 10 цифр номера телефона без +7 и пробелов в формате 987 654 3210</div> : ""}
                   </label>
                   <label for="">Email
-                    <input value={email} onChange={handleEmail} type="email" name="email" placeholder="email@mail.ru" class="passengers-card_email" style={{textTransform: "none"}}/>
+                    <input value={email} onChange={handleEmail} type="email" name="email" placeholder="email@mail.ru" className="passengers-card_email" style={{textTransform: "none"}}/>
                     {isEmailValid ? "" : <div style={{color: "red"}}>Введите корректный email в формате email@mail.ru</div>}
                   </label>
               </div>
             </fieldset>
  
-            <div class="order_title">Способ оплаты</div>
+            <div className="order_title">Способ оплаты</div>
             
-            <fieldset class="payment-methods">
+            <fieldset className="payment-methods">
               <div>
                 <input onChange={handlePayment} defaultChecked type="radio" name="payment-method" id="credit-card"/>
                 <label for="credit-card">Банковской картой
@@ -114,7 +112,7 @@ const PaymentPage = (props) => {
             phone: phone,
             email: email,
             payment_method: "online"
-            })} class="purchase-button" disabled={!(isEmailValid && !isPhoneIncomplete && isNameComplete)}>Купить билеты</button>
+            })} className="purchase-button" disabled={!(isEmailValid && !isPhoneIncomplete && isNameComplete)}>Купить билеты</button>
         </Link>
       </div>
     </div>

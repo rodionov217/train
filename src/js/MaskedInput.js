@@ -1,12 +1,9 @@
 import React from 'react'
 import MaskedInput from 'react-text-mask';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel'
 
 import FormControl from '@material-ui/core/FormControl';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
-
-
 
 const materialTheme = createMuiTheme({
   overrides: {
@@ -57,9 +54,6 @@ const materialTheme = createMuiTheme({
       root: {
         'borderRadius': '3px'
       },
-     /*  '$focused': {
-        border: 'none'
-      }, */
        notchedOutline: {
         border: 'none',
         outline: 'none'
@@ -68,19 +62,14 @@ const materialTheme = createMuiTheme({
   },
 });
 
-
-
-
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
-
   return (
     <MaskedInput
       {...other}
       ref={ref => {
         inputRef(ref ? ref.inputElement : null);
       }}
-      /* mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} */
       mask={props.mask}
       prefix={props.prefix}
       placeholderChar={'_'}
@@ -88,6 +77,7 @@ function TextMaskCustom(props) {
     />
   );
 }
+
 export default function FormattedInput(props) {
 
   const [values, setValues] = React.useState({

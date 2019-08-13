@@ -18,17 +18,8 @@ const FiltersForm = (props) => {
   const [fourth, setFourth] = useState(false);
   const [express, setExpress] = useState(false);
   const [wifi, setWifi] = useState(true);
-  //const [filters, setFilters] = useState('');
 
-  
-//&start_departure_hour_from=${departureTime.from}&start_departure_hour_to=${departureTime.to}&start_arrival_hour_from=${arrivalTime.from}&start_arrival_hour_to=${arrivalTime.to}
-
-    params.filters = `price_from=${cost.from}&price_to=${cost.to}${first ? '&have_first_class=true' : ''}${second ? '&have_second_class=true' : ''}${third ? '&have_third_class=true' : ''}${fourth ? '&have_fourth_class=true' : ''}${wifi ? '&have_wifi=true' : ''}${express ? '&have_express=true' : ''}`;
-
-
- /*  useEffect(() => {
-    props.update(params.filters);
-  }, [params.filters]); */
+  params.filters = `price_from=${cost.from}&price_to=${cost.to}${first ? '&have_first_className=true' : ''}${second ? '&have_second_className=true' : ''}${third ? '&have_third_className=true' : ''}${fourth ? '&have_fourth_className=true' : ''}${wifi ? '&have_wifi=true' : ''}${express ? '&have_express=true' : ''}`;
 
   const addFilters = event => {
     event.preventDefault();
@@ -43,8 +34,6 @@ const FiltersForm = (props) => {
     setArrivalTime({from: 0, to: 24});
     params.filters = '';
     window.location.href = '/search';
-    /* api.getRoutes(params)
-      .then(response => props.setTrains(response.items)) */;
   }
 let formref;
   const handleDropdownFilter = () => {
@@ -52,29 +41,18 @@ let formref;
   }
 
   return (
-    <div class="filters-container">
-      <div onClick={handleDropdownFilter} class="filter-cog">
-            <i class="fas fa-cog"></i>
-            <i class="far fa-window-close hidden"></i>
+    <div className="filters-container">
+      <div onClick={handleDropdownFilter} className="filter-cog">
+            <i className="fas fa-cog"></i>
+            <i className="far fa-window-close hidden"></i>
           </div>
-    <form ref={el => formref = el} action="" class="search-form minimized">
-         <fieldset onClick={handleDropdownFilter} class="search-form__set" >
+    <form ref={el => formref = el} action="" className="search-form minimized">
+         <fieldset onClick={handleDropdownFilter} className="search-form__set" >
 
          <h2>Фильтр</h2>
-         
-           {/* <div class="date-filter" >
-              <label class="trainpicker_label">Дата поездки</label>
-              <Datepicker 
-                  style={{width: "240px", height: "50px"}} 
-                  onDateSelect={date => {
-                    sessionStorage.travelDate = date;
-                  }}
-                  defaultDate={new Date()}
-                  />
-              
-           </div> */}
+
          </fieldset>
-         <fieldset class="seat-types">
+         <fieldset className="seat-types">
            <Switches 
             first={first}
             second={second}
@@ -90,8 +68,8 @@ let formref;
             setWifi={() => setWifi(!wifi)}
           />
          </fieldset>
-         <fieldset class="cost-picker" >
-           <label class="trainpicker_label">Стоимость</label>
+         <fieldset className="cost-picker" >
+           <label className="trainpicker_label">Стоимость</label>
            <RangeSlider 
               onChange={data => setCost({from: data.from, to: data.to})}
               type="double"
@@ -103,14 +81,11 @@ let formref;
               hide_min_max={true}
               skin="material"/>
          </fieldset>
-         <fieldset class="time-picker">
-            <label class="trainpicker_label">Время</label>
-            <label class="range-picker_label" for="">Время отправления</label>
+         <fieldset className="time-picker">
+            <label className="trainpicker_label">Время</label>
+            <label className="range-picker_label" for="">Время отправления</label>
             <RangeSlider 
-              onChange={data => {
-                setDepartureTime({from: data.from, to: data.to});
-                //props.handleTime({from: data.from, to: data.to}, arrivalTime)
-              }}
+              onChange={data => setDepartureTime({from: data.from, to: data.to})}
               type="double"
               grid={false}
               from={departureTime.from}
@@ -121,7 +96,7 @@ let formref;
               skin="material"
               prettify={n => n + ':00'}/>
 
-            <label class="range-picker_label" for="">Время прибытия</label>
+            <label className="range-picker_label" for="">Время прибытия</label>
             <RangeSlider 
               onChange={data => setArrivalTime({from: data.from, to: data.to})}
               type="double"
@@ -135,9 +110,9 @@ let formref;
               prettify={n => n + ':00'}/>
 
          </fieldset>
-         <fieldset class="filters__buttons">
-            <button onClick={addFilters} class="filters__button">Применить</button>
-            <button onClick={resetFilters} class="filters__button">Сбросить</button>
+         <fieldset className="filters__buttons">
+            <button onClick={addFilters} className="filters__button">Применить</button>
+            <button onClick={resetFilters} className="filters__button">Сбросить</button>
          </fieldset>
        </form>
       </div>

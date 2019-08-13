@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useRef } from 'react';
+import React, { Fragment } from 'react';
 import { TrainpickerForm } from './TrainpickerForm';
 import { ProgressSteps } from './ProgressSteps';
 import { Link } from 'react-router-dom';
@@ -6,19 +6,20 @@ import { Link } from 'react-router-dom';
 
 const Header = (props) => {
   const {homepageRefs} = props;
-
   const handleClick = event => {
-    const top = document.getElementById(event.currentTarget.dataset.id).offsetTop;
+    const top = homepageRefs[event.currentTarget.dataset.id];
     const scrollOptions = {
       top: top,
       behavior: 'smooth'
     }
+
     if (props.location.pathname === '/') {
       event.preventDefault();
     }
+
     window.scrollTo(scrollOptions);
   }
-
+    
   const handleDropdownMenu = event => {
     event.currentTarget.nextElementSibling.classList.toggle('hidden');
     (Array.from(event.currentTarget.children)).forEach( el => el.classList.toggle('hidden'));
@@ -26,28 +27,28 @@ const Header = (props) => {
 
   return (
     <Fragment>
-      <section class="header">
-        <div class="logo"><Link class="logo__link" to="/"><h1>TrainBooking</h1></Link></div>
-        <nav  class="menu">
-          <ul class="nav">
-            <li  class="nav__item"><Link onClick={handleClick} class="nav__link" data-id="about" to='/'>О нас</Link></li>
-            <li  class="nav__item"><Link to='/' onClick={handleClick} data-id="features" class="nav__link" >Как это работает</Link></li>
-            <li  class="nav__item"><Link to='/' onClick={handleClick} data-id="reviews" class="nav__link" >Отзывы</Link></li>
-            <li  class="nav__item"><Link to='/' onClick={handleClick} data-id="footer" class="nav__link" href="#footer">Контакты</Link></li>
+      <section className="header">
+        <div className="logo"><Link className="logo__link" to="/"><h1>TrainBooking</h1></Link></div>
+        <nav  className="menu">
+          <ul className="nav">
+            <li  className="nav__item"><Link onClick={handleClick} className="nav__link" data-id="about" to='/'>О нас</Link></li>
+            <li  className="nav__item"><Link to='/' onClick={handleClick} data-id="features" className="nav__link" >Как это работает</Link></li>
+            <li  className="nav__item"><Link to='/' onClick={handleClick} data-id="reviews" className="nav__link" >Отзывы</Link></li>
+            <li  className="nav__item"><Link to='/' onClick={handleClick} data-id="footer" className="nav__link" href="#footer">Контакты</Link></li>
           </ul>
         </nav>
 
-        <nav class="menu-dropdown">
-          <div onClick={handleDropdownMenu} class="menu-burger">
-            <i class="fas fa-bars"></i>
-            <i class="far fa-window-close hidden"></i>
+        <nav className="menu-dropdown">
+          <div onClick={handleDropdownMenu} className="menu-burger">
+            <i className="fas fa-bars"></i>
+            <i className="far fa-window-close hidden"></i>
           </div>
-          <ul class="nav hidden">
+          <ul className="nav hidden">
             <li></li>
-            <li  class="nav__item"><Link onClick={handleClick} class="nav__link" data-id="about" to='/'>О нас</Link></li>
-            <li  class="nav__item"><Link to='/' onClick={handleClick} data-id="how" class="nav__link" >Как это работает</Link></li>
-            <li  class="nav__item"><Link to='/' onClick={handleClick} data-id="reviews" class="nav__link" >Отзывы</Link></li>
-            <li  class="nav__item"><Link to='/' onClick={handleClick} data-id="contacts" class="nav__link" href="#footer">Контакты</Link></li>
+            <li  className="nav__item"><Link onClick={handleClick} className="nav__link" data-id="about" to='/'>О нас</Link></li>
+            <li  className="nav__item"><Link to='/' onClick={handleClick} data-id="features" className="nav__link" >Как это работает</Link></li>
+            <li  className="nav__item"><Link to='/' onClick={handleClick} data-id="reviews" className="nav__link" >Отзывы</Link></li>
+            <li  className="nav__item"><Link to='/' onClick={handleClick} data-id="footer" className="nav__link" href="#footer">Контакты</Link></li>
           </ul>
         </nav>
 

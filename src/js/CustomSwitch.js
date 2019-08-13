@@ -85,30 +85,29 @@ class CustomizedSwitches extends React.Component {
 
 
     return (
-      <div  >
-      
-      <FormGroup row >
-      <FormControlLabel
-          style={{width: '80%', "justifyContent": "space-between", "color": "#ffffff"}}
-          classes={{label: label}}
-          label={<label className={"switches_label " + getSeatType(label)} style={{color: "#fff", marginRight: '1rem'}}>{label}</label>}
-          labelPlacement="start"
-          control={
-            <Switch
-              checked={this.props.checked}
-              onChange={this.handleChange("checkedA")}
-              value="checkedA"
-              classes={{
-                switchBase: classes.colorSwitchBase,
-                checked: classes.colorChecked,
-                bar: classes.colorBar,
-                icon: classes.icon
-              }}
-            />
-          }
-        />
-      </FormGroup>
-            </div>
+      <div>
+        <FormGroup row >
+        <FormControlLabel
+            style={{width: '80%', "justifyContent": "space-between", "color": "#ffffff"}}
+            classes={{label: label}}
+            label={<label className={"switches_label " + getSeatType(label)} style={{color: "#fff", marginRight: '1rem'}}>{label}</label>}
+            labelPlacement="start"
+            control={
+              <Switch
+                checked={this.props.checked}
+                onChange={this.handleChange("checkedA")}
+                value="checkedA"
+                classes={{
+                  switchBase: classes.colorSwitchBase,
+                  checked: classes.colorChecked,
+                  bar: classes.colorBar,
+                  icon: classes.icon
+                }}
+              />
+            }
+          />
+        </FormGroup>
+      </div>
 
     );
   }
