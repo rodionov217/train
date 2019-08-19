@@ -106,6 +106,7 @@ const TrainpickerForm = (props) => {
   if (path === '/') { 
     return (
     <section className="main" id="main">
+      <div class="overlay"></div>
       <div className="main__motto">
         <div className="motto">Вся жизнь - 
           <div className="motto-bold">путешествие!</div> 
