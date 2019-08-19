@@ -11,9 +11,9 @@ const TypeaheadInput = (props) => {
   const [inputValue, setInputValue] = useState(props.value);
   
   useEffect(() => {
-    if (props.value !== inputValue) {
-      setInputValue(props.value);
-    }
+    //if (props.value !== inputValue) {
+      //setInputValue(props.value);
+    //}
   }, [props.value, inputValue]);
 
   const handleFocus = (event) => {
@@ -60,24 +60,21 @@ const TypeaheadInput = (props) => {
     if (!suggestions) {
       return;
     }
-    switch (event.key) {
-      case 'ArrowDown':
+    if (event.key === 'ArrowDown') {
         current++;
         Array.from(suggestions.children).forEach(el => el.classList.remove('suggestion-active'));
         if (current > suggestions.children.length - 1) {
           current = 0;
         }
         suggestions.children[current].classList.add('suggestion-active');
-        break;
-      case 'ArrowUp':
+    } else if (event.key === 'ArrowUp') {
         current--;
         Array.from(suggestions.children).forEach(el => el.classList.remove('suggestion-active')); 
         if (current < 0) {
           current = suggestions.children.length - 1;
         }
         suggestions.children[current].classList.add('suggestion-active');
-        break;
-      case 'Enter':
+      } else if (event.key === 'Enter') {
         let active = (Array.from(suggestions.children)).find(el => el.classList.contains('suggestion-active'));
         if (!active) {
           return;
@@ -88,12 +85,10 @@ const TypeaheadInput = (props) => {
         });
         setHint('');
         setShowSuggestions(false);
-        break;
-      default:
+      } else {
         handleInput(event);
+      }
     }
-    
-  }
 
   return (
     
