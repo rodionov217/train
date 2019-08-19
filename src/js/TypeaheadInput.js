@@ -77,12 +77,14 @@ const TypeaheadInput = (props) => {
       } else if (event.key === 'Enter') {
         let active = (Array.from(suggestions.children)).find(el => el.classList.contains('suggestion-active'));
         if (!active) {
+          console.log(active);
           return;
         }
         onSelect({
           name: active.textContent,
           id: active.dataset.id
         });
+        setInputValue(active.textContent);
         setHint('');
         setShowSuggestions(false);
       } else {
