@@ -74,10 +74,9 @@ const TypeaheadInput = (props) => {
           current = suggestions.children.length - 1;
         }
         suggestions.children[current].classList.add('suggestion-active');
-      } else if (event.key === 'Enter') {
+    } else if (event.key === 'Enter') {
         let active = (Array.from(suggestions.children)).find(el => el.classList.contains('suggestion-active'));
         if (!active) {
-          console.log(active);
           return;
         }
         onSelect({
@@ -93,7 +92,6 @@ const TypeaheadInput = (props) => {
     }
 
   return (
-    
     <div className="input-with-icon">
       <span className="trainpicker__hint">
         <span className="trainpicker__hint-transparent">{hint.slice(0, inputValue.length)}</span>{hint.slice(inputValue.length)}
